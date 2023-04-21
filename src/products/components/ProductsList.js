@@ -6,12 +6,14 @@ import ProductItem from "./ProductItem";
 import { ContentProducts } from "./style";
 
 const ProductsList = () => {
-  const { products, removeProduct, updateProduct } = useProducts();
+  const { products, removeProduct, getProduct, productEdit } = useProducts();
+
+  console.log(productEdit);
 
   return (
     <>
       <div>
-        <FormProductAdd />
+        <FormProductAdd productEdit={productEdit} />
       </div>
 
       <ContentProducts>
@@ -22,7 +24,7 @@ const ProductsList = () => {
             </div>
             <div>
               <DeleteButton remove={() => removeProduct(product._id)} />
-              <EditButton update={() => updateProduct(product)} />
+              <EditButton update={() => getProduct(product)} />
             </div>
           </>
         ))}

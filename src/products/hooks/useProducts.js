@@ -2,10 +2,13 @@ import { useCallback, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ProductsService from "../../services/products/productsService";
 
-const useProducts = (options = {}) => {
+const useProducts = () => {
   const [products, setProducts] = useState([]);
+  const [productEdit, setProductEdit] = useState({});
   const { getAllProducts, createProduct, deleteProduct, editProduct } =
     ProductsService();
+
+  console.log(productEdit);
 
   const getData = useCallback(async () => {
     const { data } = await getAllProducts();
@@ -25,13 +28,11 @@ const useProducts = (options = {}) => {
   };
 
   const updateProduct = async (product) => {
-    const dataProduct = await editProduct(product._id, product);
-    const datos = dataProduct.data;
+    await editProduct(product._id, product);
+  };
 
-    if (options.updateProd) {
-      options.updateProd({ datos });
-    }
-    console.log(datos);
+  const getProduct = (product) => {
+    setProductEdit(product);
   };
 
   useEffect(() => {
@@ -48,6 +49,8 @@ const useProducts = (options = {}) => {
     removeProduct,
     updateProduct,
     getData,
+    getProduct,
+    productEdit,
   };
 };
 
