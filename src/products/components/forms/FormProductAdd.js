@@ -1,14 +1,14 @@
-
 import { useProductsForm } from "../../hooks/useProductsForm";
 import AddButton from "../buttons/AddButton";
 import { FormProduct, InputForm } from "./styled";
 
-export const FormProductAdd = ({ productEdit }) => {
-  const { onInputChange,  onFormSubmit } = useProductsForm();
+export const FormProductAdd = ({ productEdit, onSave }) => {
+  const { onInputChange, onFormSubmit, formState } = useProductsForm(
+    productEdit,
+    onSave
+  );
 
-  console.log(productEdit);
-
-  const { category, name, stock, price, imgURL, description } = productEdit;
+  const { category, name, description, stock, price, imgURL } = formState;
 
   return (
     <>

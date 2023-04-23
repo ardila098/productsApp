@@ -4,35 +4,31 @@ import ProductsService from "../../services/products/productsService";
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
-  const [productEdit, setProductEdit] = useState({});
+
   const { getAllProducts, createProduct, deleteProduct, editProduct } =
     ProductsService();
 
-  console.log(productEdit);
-
   const getData = useCallback(async () => {
+    console.log('oeeeee')
     const { data } = await getAllProducts();
     setProducts(data);
   }, []);
 
-  const addProduct = (dataForm) => {
+  const addProduct = async (dataForm) => {
     console.log(dataForm);
-    createProduct(dataForm);
+    await createProduct(dataForm);
     getData();
   };
-
-  const removeProduct = (producId) => {
+  
+  const removeProduct = async (producId) => {
     console.log(producId);
-    deleteProduct(producId);
+    await deleteProduct(producId);
     getData();
   };
-
+  
   const updateProduct = async (product) => {
     await editProduct(product._id, product);
-  };
-
-  const getProduct = (product) => {
-    setProductEdit(product);
+    getData();
   };
 
   useEffect(() => {
@@ -49,8 +45,6 @@ const useProducts = () => {
     removeProduct,
     updateProduct,
     getData,
-    getProduct,
-    productEdit,
   };
 };
 

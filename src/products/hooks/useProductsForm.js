@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 import useProducts from "./useProducts";
 
 const initialForm = {
@@ -10,15 +10,20 @@ const initialForm = {
   imgURL: "",
 };
 
-export const useProductsForm = () => {
+export const useProductsForm = (product, onSave) => {
   const [formState, setFormState] = useState(initialForm);
-  const { addProduct } = useProducts();
+  const { addProduct, updateProduct } = useProducts();
 
-  const onFormSubmit = (event) => {
+  const onFormSubmit = async (event) => {
     event.preventDefault();
-    addProduct(formState);
+    if (formState._id) {
+      await updateProduct(formState);
+      console.log(formState);
+    } else {
+      await addProduct(formState);
+    }
     onResetForm();
-    console.log(formState);
+    onSave();
   };
 
   const onInputChange = ({ target }) => {
@@ -29,11 +34,18 @@ export const useProductsForm = () => {
     });
   };
 
-
+  const getProduct = (product) => {
+    console.log(product);
+    setFormState(product);
+  };
 
   const onResetForm = () => {
     setFormState(initialForm);
   };
+
+  useEffect(() => {
+    setFormState(product ?? initialForm);
+  }, [product]);
 
   return {
     ...formState,
@@ -42,5 +54,6 @@ export const useProductsForm = () => {
     onInputChange,
     onResetForm,
     onFormSubmit,
+    getProduct,
   };
 };
