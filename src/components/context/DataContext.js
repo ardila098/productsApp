@@ -1,21 +1,21 @@
 import React, { createContext } from "react";
-import useDrawer from "../cart/drawerCart/hook/useDrawer";
-import useCart from "../cart/hooks/useCart";
-
+import useDrawerCart from "../drawer/hooks/useDrawerCart";
+import useCart from "../../cart/hooks/useCart";
 
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const { visible, setVisible } = useDrawer();
+  const { toggleDrawer, isOpen, closeDrawer } = useDrawerCart();
   const { cartItem, onAddToCart } = useCart();
 
   return (
     <DataContext.Provider
       value={{
-        visible,
-        setVisible,
+        toggleDrawer,
+        isOpen,
         cartItem,
         onAddToCart,
+        closeDrawer,
       }}
     >
       {children}
