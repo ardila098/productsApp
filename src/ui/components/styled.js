@@ -8,7 +8,7 @@ const ContentNav = styled.nav`
   width: 100%;
   gap: 20px;
   border: 1px solid #eaeaea;
-  background-color: #191919;
+  /* background-color: #191919; */
 
   div {
     flex: auto;
@@ -56,7 +56,7 @@ const ButtonIconsUser = styled(Button)`
 const ContentInitialNav =styled.div`
 .link{
 
-  color: white;
+  /* color: white; */
 }
 `
 

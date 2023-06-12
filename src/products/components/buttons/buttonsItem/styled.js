@@ -5,6 +5,7 @@ display: flex;
 flex-wrap: nowrap;
 gap: 20px;
 background-color: white;
+align-items: center;
 `;
 
 const ButtonAdd = styled.button`
