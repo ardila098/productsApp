@@ -1,13 +1,15 @@
 import React from "react";
-import useProducts from "../hooks/useProducts";
-import { useProductsForm } from "../hooks/useProductsForm";
-import DeleteButton from "./buttons/DeleteButton";
-import EditButton from "./buttons/EditButton";
-import { FormProductAdd } from "./forms/FormProductAdd";
-import ProductItem from "./ProductItem";
-import { ContentProducts } from "./style";
 
-const ProductsList = () => {
+import { ContentProducts } from "./style";
+import useProducts from "../../hooks/useProducts";
+import { FormProductAdd } from "../forms/FormProductAdd";
+
+import { useProductsForm } from "../../hooks/useProductsForm";
+import DeleteButton from "../buttons/buttonsCrud/DeleteButton";
+import EditButton from "../buttons/buttonsCrud/EditButton";
+import ProductItem from "./ProductItem";
+
+const ProductsCrud = () => {
   const { products, removeProduct, getData } = useProducts();
   const { getProduct, formState } = useProductsForm();
 
@@ -24,15 +26,14 @@ const ProductsList = () => {
               <ProductItem key={product._id} {...product} />
             </div>
             <div>
-              |
               <DeleteButton remove={() => removeProduct(product._id)} />
               <EditButton update={() => getProduct(product)} />
             </div>
           </React.Fragment>
-        ))}
+        ))} 
       </ContentProducts>
     </>
   );
 };
 
-export default ProductsList;
+export default ProductsCrud;

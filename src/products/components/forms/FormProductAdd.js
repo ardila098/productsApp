@@ -1,5 +1,5 @@
 import { useProductsForm } from "../../hooks/useProductsForm";
-import AddButton from "../buttons/AddButton";
+import AddButton from "../buttons/buttonsCrud/AddButton";
 import { FormProduct, InputForm } from "./styled";
 
 export const FormProductAdd = ({ productEdit, onSave }) => {
@@ -63,7 +63,6 @@ export const FormProductAdd = ({ productEdit, onSave }) => {
           className="form-control"
           placeholder="imgURL"
           name="imgURL"
-          value={imgURL}
           onChange={onInputChange}
         />
 

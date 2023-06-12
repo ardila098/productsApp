@@ -1,23 +1,12 @@
-import React from 'react'
-import {Route,BrowserRouter,Routes} from 'react-router-dom'
-import ProductsList from './products/components/ProductsList'
+import React from "react";
+import AppRouter from "./Router/AppRouter";
 
 const App = () => {
   return (
-<>
-<BrowserRouter>
+    <>
+      <AppRouter />
+    </>
+  );
+};
 
-<Routes>
-
-<Route path='/*' element={<ProductsList/>} />
-
-
-</Routes>
-
-
-</BrowserRouter>
-</>
-  )
-}
-
-export default App
+export default App;
