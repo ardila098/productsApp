@@ -1,13 +1,11 @@
 import Drawer from "react-modern-drawer";
 
 import "react-modern-drawer/dist/index.css";
-import useDrawerCart from "./hooks/useDrawerCart";
+import { useContext } from "react";
+import DataContext from "../context/DataContext";
 
 const DrawerCart = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { isOpen, toggleDrawer, closeDrawer } = useDrawerCart();
-
-  console.log(isOpen);
+  const { toggleDrawer,isOpen,closeDrawer } = useContext(DataContext);
 
   return (
     <>
