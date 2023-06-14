@@ -3,20 +3,20 @@ import {
   HeartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-// import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-// import DataContext from "../../context/DataContext";
 import {
   ContentNav,
   ButtonIconsUser,
   ContentIconsUser,
   ContentSeacrh,
-  ContentInitialNav
+  ContentInitialNav,
 } from "./styled";
+import { useContext } from "react";
+import DataContext from "../../components/context/DataContext";
 
 export const Navbar = () => {
-  // const { setVisible } = useContext(DataContext);
+  const { toggleDrawer } = useContext(DataContext);
 
   return (
     <ContentNav className="navbar ">
@@ -30,11 +30,7 @@ export const Navbar = () => {
         </NavLink>
       </ContentInitialNav>
 
-      <ContentSeacrh className="">
-       
-         
-     
-      </ContentSeacrh>
+      <ContentSeacrh className=""></ContentSeacrh>
 
       <ContentIconsUser>
         <NavLink className="icons " to="/Like">
@@ -45,13 +41,12 @@ export const Navbar = () => {
           ></ButtonIconsUser>
         </NavLink>
 
-        <NavLink className="icons " to="/login">
-          <ButtonIconsUser
-            className="buttonIcon"
-            icon={<ShoppingOutlined />}
-            // onClick={() => setVisible(true)}
-          ></ButtonIconsUser>
-        </NavLink>
+        <ButtonIconsUser
+          className="buttonIcon"
+          icon={<ShoppingOutlined />}
+          // onClick={() => setVisible(true)}
+          onClick={toggleDrawer}
+        ></ButtonIconsUser>
 
         <NavLink className="icons" to="/login">
           <ButtonIconsUser
