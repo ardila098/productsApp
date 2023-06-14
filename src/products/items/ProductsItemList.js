@@ -8,7 +8,7 @@ import {
   PriceText,
   ContentPrice,
 } from "./Styled";
-
+import { Divider } from "antd";
 
 const ProductItemList = ({
   id,
@@ -24,6 +24,8 @@ const ProductItemList = ({
       <ContentImg>
         <img src={imgURL} alt={name} />
       </ContentImg>
+
+      <Divider style={{marginBottom:'2px'}}/>
 
       <ContentTitle>
         <TitleProduct>{name}</TitleProduct>

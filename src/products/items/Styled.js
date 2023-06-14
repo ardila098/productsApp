@@ -29,9 +29,8 @@ const CardProduct = styled.div`
 `;
 
 const ContentTitle = styled.div`
-  height: 100px;
-  height: 50px;
-  
+  height: 30px;
+  text-transform: uppercase;
 `;
 
 const TitleProduct = styled.p`
@@ -41,9 +40,9 @@ const TitleProduct = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "Gotham", sans-serif;
   color: black;
+  margin: 0px;
 `;
 
 const ContentImg = styled.div`
@@ -76,7 +75,10 @@ const DescriptionCard = styled.p`
   text-overflow: ellipsis;
 `;
 
-const ContentPrice = styled.div``;
+const ContentPrice = styled.div`
+
+margin-top: 0px;
+`;
 
 const PriceText = styled.span`
   font-size: 14px;
@@ -85,7 +87,7 @@ const PriceText = styled.span`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Gotham", sans-serif;
   align-items: left;
   color: #636665;
 `;
