@@ -10,32 +10,43 @@ const ProductsService = () => {
     };
   };
 
-  const createProduct = async (dataForm) => {
-    await axios.post(`${baseUrl}${API.products.root}`, dataForm);
+  const createProduct = async (data) => {
+    await axios.post(`${baseUrl}${API.products.root}`, data);
   };
 
-  const deleteProduct = async (dataForm) => {
-    console.log(dataForm);
-    await axios.delete(`${baseUrl}${API.products.root}${dataForm}`);
+  const deleteProduct = async (id) => {
+    console.log(id);
+    await axios.delete(`${baseUrl}${API.products.root}${id}`);
   };
 
-  const editProduct = async (dataFormId, dataForm) => {
-    const params = {
-      name: dataForm.name,
-      category: dataForm.category,
-      price: dataForm.price,
-      description: dataForm.description,
-      stock: dataForm.stock,
-      imgURL: dataForm.imgURL,
+
+  const getProduct= async ({ id }) => {
+    console.log(id);
+    const getProduct = await axios.get(
+      "http://localhost:3000/api/products/" + id
+    );
+    return {
+      data: getProduct.data,
     };
-    console.log(dataForm);
-    console.log(dataFormId);
-    const { data } = await axios.put(
-      "http://localhost:3000/api/products/" + dataFormId,
+  };
+
+  const editProduct = async (id, data) => {
+    const params = {
+      name: data.name,
+      category: data.category,
+      price: data.price,
+      description: data.description,
+      stock: data.stock,
+      imgURL: data.imgURL,
+    };
+    console.log(data);
+    console.log(id);
+    const { dataProduct } = await axios.put(
+      "http://localhost:3000/api/products/" + id,
       params
     );
-    console.log(data);
-    return {data:data }
+    console.log(dataProduct);
+    return { data: dataProduct };
   };
 
   return {
@@ -43,6 +54,7 @@ const ProductsService = () => {
     createProduct,
     deleteProduct,
     editProduct,
+    getProduct,
   };
 };
 export default ProductsService;

@@ -15,7 +15,7 @@ const DrawerCart = () => {
         direction="right"
         className="bla bla bla"
       >
-        <div>Hello World</div>
+        <div>Products</div>
 
         <button onClick={closeDrawer}>x</button>
       </Drawer>

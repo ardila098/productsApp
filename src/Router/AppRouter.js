@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import ProductsRoutes from "../products/routes/ProductsRoutes";
 import { Navbar } from "../ui/components/Navbar";
 import { DataProvider } from "../components/context/DataContext";
 import DrawerCart from "../components/drawer/DrawerCart";
 import Slider from "../components/sliders/Slider";
+import ProductsRoutes from "../components/products/routes/ProductsRoutes";
 
 const AppRouter = () => {
   return (
