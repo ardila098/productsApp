@@ -10,8 +10,12 @@ const ProductsService = () => {
     };
   };
 
-  const createProduct = async (data) => {
-    await axios.post(`${baseUrl}${API.products.root}`, data);
+  const createProduct = async (formData) => {
+    await axios.post(`${baseUrl}${API.products.root}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   };
 
   const deleteProduct = async (id) => {
@@ -19,8 +23,7 @@ const ProductsService = () => {
     await axios.delete(`${baseUrl}${API.products.root}${id}`);
   };
 
-
-  const getProduct= async ({ id }) => {
+  const getProduct = async ({ id }) => {
     console.log(id);
     const getProduct = await axios.get(
       "http://localhost:3000/api/products/" + id
@@ -51,10 +54,10 @@ const ProductsService = () => {
 
   return {
     getAllProducts,
-    createProduct,
     deleteProduct,
     editProduct,
     getProduct,
+    createProduct,
   };
 };
 export default ProductsService;

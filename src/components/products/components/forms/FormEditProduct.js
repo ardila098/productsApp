@@ -1,19 +1,27 @@
-import React, { useEffect } from "react";
-import { Input, InputNumber, Upload, Form, Col, Row, Button } from "antd/es";
+import React, { useEffect, useState } from "react";
+import { Input, InputNumber, Form, Col, Row, Button, Upload } from "antd/es";
 import useProducts from "../../hooks/useProducts";
 
 const FormEditProduct = (id) => {
   const [form] = Form.useForm();
-  const { getProductById, UpdateProduct } = useProducts();
+  const { getProductById, addProduct } = useProducts();
+  const [images, setImages] = useState([]);
 
-  const handleSubmit = () => {
-    const values = form.getFieldsValue();
+  const handleSubmit = (values) => {
+    const product = {
+      ...values,
+      imgs: {
+        url: images,
+      },
+    };
 
-    if (id) {
-      UpdateProduct(id, values);
-    } else {
-      UpdateProduct(values);
-    }
+    addProduct(product);
+  };
+
+  const onUpload = (info) => {
+    console.log(info);
+    const urls = info.fileList.map((file) => file.name);
+    setImages(urls);
   };
 
   useEffect(() => {
@@ -57,8 +65,14 @@ const FormEditProduct = (id) => {
           <Input.TextArea />
         </Form.Item>
 
-        <Form.Item name="image" label="Image">
-          <Upload>
+        <Form.Item name="imgs" label="Images">
+          <Upload
+            listType="picture-card"
+            name="images"
+            action="/api/upload"
+            onChange={onUpload}
+            multiple
+          >
             <Button>Upload</Button>
           </Upload>
         </Form.Item>
