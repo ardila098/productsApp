@@ -7,22 +7,22 @@ const FormEditProduct = (id) => {
   const { getProductById, addProduct } = useProducts();
   const [images, setImages] = useState([]);
 
+ 
   const handleSubmit = (values) => {
     const product = {
       ...values,
-      imgs: {
-        url: images,
-      },
+      imgs: images,
     };
-
+    console.log(product);
     addProduct(product);
   };
 
+
   const onUpload = (info) => {
-    console.log(info);
-    const urls = info.fileList.map((file) => file.name);
-    setImages(urls);
+    console.log(info.fileList);
+    setImages(info.fileList.map(file => file.originFileObj));
   };
+
 
   useEffect(() => {
     if (id) {

@@ -10,12 +10,20 @@ const ProductsService = () => {
     };
   };
 
-  const createProduct = async (formData) => {
-    await axios.post(`${baseUrl}${API.products.root}`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+  const createProduct = async (product) => {
+    const formData = new FormData();
+
+    formData.append("name", product.name);
+    formData.append("category", product.category);
+    formData.append("description", product.description);
+    formData.append("price", product.price);
+    formData.append("stock", product.stock);
+
+    product.imgs.forEach((img) => {
+      formData.append("imgs", img);
     });
+
+    await axios.post(`${baseUrl}${API.products.root}`, formData);
   };
 
   const deleteProduct = async (id) => {
@@ -33,23 +41,27 @@ const ProductsService = () => {
     };
   };
 
-  const editProduct = async (id, data) => {
-    const params = {
-      name: data.name,
-      category: data.category,
-      price: data.price,
-      description: data.description,
-      stock: data.stock,
-      imgURL: data.imgURL,
-    };
-    console.log(data);
-    console.log(id);
-    const { dataProduct } = await axios.put(
-      "http://localhost:3000/api/products/" + id,
-      params
+  const editProduct = async (id, product) => {
+    const formData = new FormData();
+
+    formData.append("name", product.name);
+    formData.append("category", product.category);
+    formData.append("description", product.description);
+    formData.append("price", product.price);
+    formData.append("stock", product.stock);
+
+    if (product.newImgs) {
+      product.newImgs.forEach((img) => {
+        formData.append("imgs", img);
+      });
+    }
+
+    const { data } = await axios.put(
+      `${baseUrl}${API.products.root}${id}`,
+      formData
     );
-    console.log(dataProduct);
-    return { data: dataProduct };
+
+    return { data };
   };
 
   return {
