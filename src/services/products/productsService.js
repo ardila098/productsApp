@@ -11,6 +11,7 @@ const ProductsService = () => {
   };
 
   const createProduct = async (product) => {
+    console.log(product);
     const formData = new FormData();
 
     formData.append("name", product.name);
@@ -24,11 +25,6 @@ const ProductsService = () => {
     });
 
     await axios.post(`${baseUrl}${API.products.root}`, formData);
-  };
-
-  const deleteProduct = async (id) => {
-    console.log(id);
-    await axios.delete(`${baseUrl}${API.products.root}${id}`);
   };
 
   const getProduct = async ({ id }) => {
@@ -62,6 +58,11 @@ const ProductsService = () => {
     );
 
     return { data };
+  };
+
+  const deleteProduct = async (id) => {
+    console.log(id);
+    await axios.delete(`${baseUrl}${API.products.root}${id}`);
   };
 
   return {

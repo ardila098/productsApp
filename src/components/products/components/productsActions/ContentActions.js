@@ -2,11 +2,11 @@ import { Button } from "antd";
 import React from "react";
 import { useState } from "react";
 import ModalEditProduct from "../modals/ModalEditProduct";
+import useProducts from "../../hooks/useProducts";
 
 const ContentActions = ({ data }) => {
   const [modalData, setModalData] = useState({ open: false, id: null });
-
-
+  const { removeProduct } = useProducts();
 
   const handleCreate = () => {
     setModalData({
@@ -15,7 +15,6 @@ const ContentActions = ({ data }) => {
   };
 
   const handleEdit = () => {
-   
     setModalData({
       open: true,
       id: data._id,
@@ -29,9 +28,7 @@ const ContentActions = ({ data }) => {
   };
 
   const handleDelete = () => {
-    setModalData({
-      id: data._id,
-    });
+    removeProduct(data._id);
   };
 
   return (

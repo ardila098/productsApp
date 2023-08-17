@@ -1,9 +1,10 @@
 import { useState, useCallback, useEffect } from "react";
-import ProductsService from "../../../services/products/ProductsService";
+import ProductsService from "../../../services/products/productsService";
 
 const useProducts = () => {
   const [products, setproducts] = useState();
-  const { createProduct, getAllProducts, getProduct } = ProductsService();
+  const { createProduct, getAllProducts, getProduct, deleteProduct } =
+    ProductsService();
 
   const getData = useCallback(async () => {
     try {
@@ -26,6 +27,10 @@ const useProducts = () => {
     await createProduct(formData);
   };
 
+  const removeProduct = async (id) => {
+    await deleteProduct(id);
+  };
+
   useEffect(() => {
     getData();
   }, [getData]);
@@ -35,6 +40,7 @@ const useProducts = () => {
     getData,
     getProductById,
     addProduct,
+    removeProduct,
     // UpdateProduct,
   };
 };
