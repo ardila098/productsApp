@@ -1,11 +1,10 @@
 import React from "react";
-import ProductsTable from "../components/ProductsTable";
+import Products from "../components/Products";
 
 const ProductsTablePage = () => {
   return (
     <div>
-      
-      <ProductsTable />
+      <Products />
     </div>
   );
 };

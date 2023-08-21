@@ -7,7 +7,6 @@ const FormEditProduct = (id) => {
   const { getProductById, addProduct } = useProducts();
   const [images, setImages] = useState([]);
 
- 
   const handleSubmit = (values) => {
     const product = {
       ...values,
@@ -17,15 +16,15 @@ const FormEditProduct = (id) => {
     addProduct(product);
   };
 
-
   const onUpload = (info) => {
     console.log(info.fileList);
-    setImages(info.fileList.map(file => file.originFileObj));
+    setImages(info.fileList.map((file) => file.originFileObj));
   };
 
-
   useEffect(() => {
-    if (id) {
+    if (!id) {
+      form.resetFields();
+    } else {
       getProductById(id).then((data) => {
         form.setFieldsValue(data);
       });

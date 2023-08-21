@@ -2,17 +2,21 @@ import { useState, useCallback, useEffect } from "react";
 import ProductsService from "../../../services/products/productsService";
 
 const useProducts = () => {
-  const [products, setproducts] = useState();
+  const [products, setproducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { createProduct, getAllProducts, getProduct, deleteProduct } =
     ProductsService();
 
   const getData = useCallback(async () => {
+    setIsLoading(true);
     try {
       const { data } = await getAllProducts();
       console.log(data);
       setproducts(data);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
@@ -29,6 +33,7 @@ const useProducts = () => {
 
   const removeProduct = async (id) => {
     await deleteProduct(id);
+    getData();
   };
 
   useEffect(() => {
@@ -41,6 +46,7 @@ const useProducts = () => {
     getProductById,
     addProduct,
     removeProduct,
+    isLoading,
     // UpdateProduct,
   };
 };

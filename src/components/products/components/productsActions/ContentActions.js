@@ -1,58 +1,30 @@
-import { Button } from "antd";
+import PropType from "prop-types";
 import React from "react";
-import { useState } from "react";
 import ModalEditProduct from "../modals/ModalEditProduct";
-import useProducts from "../../hooks/useProducts";
+import useProductsActions from "./hook/useProductsActions";
+import ButtonEditProduct from "./buttonsProductsActions.js/ButtonEditProduct";
+import ButtonDeleteProduct from "./buttonsProductsActions.js/ButtonDeleteProduct";
+import { ContentActionsTableProducts } from "./buttonsProductsActions.js/styled";
 
 const ContentActions = ({ data }) => {
-  const [modalData, setModalData] = useState({ open: false, id: null });
-  const { removeProduct } = useProducts();
-
-  const handleCreate = () => {
-    setModalData({
-      open: true,
-    });
-  };
-
-  const handleEdit = () => {
-    setModalData({
-      open: true,
-      id: data._id,
-    });
-  };
-
-  const handleClose = () => {
-    setModalData({
-      open: false,
-    });
-  };
-
-  const handleDelete = () => {
-    removeProduct(data._id);
-  };
+  const { handleClose, handleEdit, modalData, handleDelete } =
+    useProductsActions(data);
 
   return (
     <>
-      <div style={{ display: "flex", gap: "20px" }}>
-        <Button
-          onClick={() => handleCreate()}
-          style={{ background: "#E7F5DA" }}
-        />
+      <ContentActionsTableProducts>
+        <ButtonEditProduct handleEdit={handleEdit} />
 
-        <Button
-          onClick={() => handleEdit()}
-          style={{ background: "#ADB4D1" }}
-        />
-
-        <Button
-          onClick={() => handleDelete()}
-          style={{ background: "#ADB4D1" }}
-        />
+        <ButtonDeleteProduct handleDelete={handleDelete} />
 
         <ModalEditProduct data={modalData} close={handleClose} />
-      </div>
+      </ContentActionsTableProducts>
     </>
   );
 };
 
 export default ContentActions;
+
+ContentActions.propType = {
+  data: PropType.object,
+};

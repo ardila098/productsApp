@@ -1,14 +1,13 @@
 import React from "react";
-import ProductsTable from "./ProductsTable";
 import ButtonCreateProduct from "./productsActions/buttonsProductsActions.js/ButtonCreateProduct";
 
-const Products = () => {
+const ProductsHeader = () => {
   return (
-    <>
+    <div style={{ marginBottom: "50px" }}>
       <ButtonCreateProduct />
-      <ProductsTable />
-    </>
+     
+    </div>
   );
 };
 
-export default Products;
+export default ProductsHeader;
