@@ -1,10 +1,11 @@
 import { useState } from "react";
-import useProducts from "../../../hooks/useProducts";
+import { useContext } from "react";
+import { ProductsContext } from "../../../context/ProductsContext";
 
 const useProductsActions = (data) => {
   const [modalData, setModalData] = useState({ open: false, id: null });
-  const { removeProduct } = useProducts();
-
+  const { productsCrud } = useContext(ProductsContext);
+  const { removeProduct } = productsCrud;
 
   const handleCreate = () => {
     setModalData({
@@ -26,7 +27,6 @@ const useProductsActions = (data) => {
     });
   };
 
-
   const handleDelete = () => {
     removeProduct(data._id);
   };
@@ -36,7 +36,7 @@ const useProductsActions = (data) => {
     modalData,
     handleEdit,
     handleClose,
-    handleDelete
+    handleDelete,
   };
 };
 

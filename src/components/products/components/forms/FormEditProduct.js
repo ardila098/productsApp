@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Input, InputNumber, Form, Col, Row, Button, Upload } from "antd/es";
-import useProducts from "../../hooks/useProducts";
+import { ProductsContext } from "../../context/ProductsContext";
 
 const FormEditProduct = (id) => {
   const [form] = Form.useForm();
-  const { getProductById, addProduct } = useProducts();
+  const { productsCrud } = useContext(ProductsContext);
+  const { addProduct, getProductById } = productsCrud;
   const [images, setImages] = useState([]);
 
   const handleSubmit = (values) => {

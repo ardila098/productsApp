@@ -1,12 +1,12 @@
 import React from "react";
-import useProducts from "../hooks/useProducts";
 import { Table } from "antd/es";
 import ContentActions from "./productsActions/ContentActions";
+import { useContext } from "react";
+import { ProductsContext } from "../context/ProductsContext";
 
 const ProductsTable = () => {
-  const { products } = useProducts();
-
-  console.log(products);
+  const { productsCrud } = useContext(ProductsContext);
+  const { products } = productsCrud;
 
   const columns = [
     {

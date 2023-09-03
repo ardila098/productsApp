@@ -1,12 +1,15 @@
 import React from "react";
 import ProductsTable from "./ProductsTable";
-import ButtonCreateProduct from "./productsActions/buttonsProductsActions.js/ButtonCreateProduct";
+import { ProductsProvider } from "../context/ProductsContext";
+import ProductsHeader from "./ProductsHeader";
 
 const Products = () => {
   return (
     <>
-      <ButtonCreateProduct />
-      <ProductsTable />
+      <ProductsProvider>
+        <ProductsHeader />
+        <ProductsTable />
+      </ProductsProvider>
     </>
   );
 };
