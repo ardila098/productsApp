@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { useContext } from "react";
-import { ProductsContext } from "../../../context/ProductsContext";
 
-const useProductsActions = (data) => {
+
+const useProductsActions = ({removeProduct}) => {
   const [modalData, setModalData] = useState({ open: false, id: null });
-  const { productsCrud } = useContext(ProductsContext);
-  const { removeProduct } = productsCrud;
+  
 
   const handleCreate = () => {
     setModalData({
@@ -17,7 +15,7 @@ const useProductsActions = (data) => {
   const handleEdit = () => {
     setModalData({
       open: true,
-      id: data._id,
+      id: "",
     });
   };
 
@@ -27,7 +25,8 @@ const useProductsActions = (data) => {
     });
   };
 
-  const handleDelete = () => {
+  const handleDelete = (data) => {
+    console.log(data);
     removeProduct(data._id);
   };
 

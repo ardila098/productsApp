@@ -1,14 +1,13 @@
 import React from "react";
-import ProductsTable from "./ProductsTable";
+
 import { ProductsProvider } from "../context/ProductsContext";
-import ProductsHeader from "./ProductsHeader";
+import InitialProductsContainer from "./InitialProductsContainer";
 
 const Products = () => {
   return (
     <>
       <ProductsProvider>
-        <ProductsHeader />
-        <ProductsTable />
+        <InitialProductsContainer />
       </ProductsProvider>
     </>
   );

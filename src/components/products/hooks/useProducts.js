@@ -24,11 +24,13 @@ const useProducts = () => {
     const { data } = await getProduct(idProduct);
     console.log(data);
     return data;
+    
   };
 
   const addProduct = async (formData) => {
     console.log(formData);
     await createProduct(formData);
+    getData();
   };
 
   const removeProduct = async (id) => {

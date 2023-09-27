@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ButtonAddPoduct } from "./styled";
-import useProductsActions from "../hook/useProductsActions";
 import ModalEditProduct from "../../modals/ModalEditProduct";
+import { ProductsContext } from "../../../context/ProductsContext";
 
 const ButtonCreateProduct = () => {
-  const { handleCreate, modalData, handleClose } = useProductsActions();
+  const { productsActions } = useContext(ProductsContext);
+  const { handleCreate, modalData, handleClose } = productsActions;
 
   return (
     <>

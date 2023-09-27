@@ -5,7 +5,6 @@ const ProductsHeader = () => {
   return (
     <div style={{ marginBottom: "50px" }}>
       <ButtonCreateProduct />
-     
     </div>
   );
 };
