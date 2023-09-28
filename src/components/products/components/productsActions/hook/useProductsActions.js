@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-
-const useProductsActions = ({removeProduct}) => {
+const useProductsActions = ({ removeProduct }) => {
   const [modalData, setModalData] = useState({ open: false, id: null });
-  
 
   const handleCreate = () => {
     setModalData({
@@ -12,10 +10,10 @@ const useProductsActions = ({removeProduct}) => {
     });
   };
 
-  const handleEdit = () => {
+  const handleEdit = (data) => {
     setModalData({
       open: true,
-      id: "",
+      id: data._id,
     });
   };
 
