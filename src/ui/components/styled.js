@@ -2,20 +2,27 @@ import { Button } from "antd";
 import styled from "styled-components";
 
 const ContentNav = styled.nav`
- 
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   gap: 20px;
-  border: 1px solid #eaeaea;
-  /* background-color: #191919; */
+  background-color: transparent;
+  position: fixed;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(5px);
+    border: 1px solid;
+  }
 
   div {
     flex: auto;
     padding: 20px;
   }
+
   .link {
     text-decoration: none;
+    cursor: pointer;
   }
 `;
 
@@ -24,7 +31,7 @@ const InputSeacrh = styled.input`
   height: 40px;
   display: flex;
   border-radius: 10px;
-`
+`;
 
 const ContentSeacrh = styled.div`
   display: flex;
@@ -33,7 +40,6 @@ const ContentSeacrh = styled.div`
     display: flex;
   }
 `;
-
 
 const ContentIconsUser = styled.div`
   display: flex;
@@ -49,16 +55,13 @@ const ContentIconsUser = styled.div`
   }
 `;
 
-const ButtonIconsUser = styled(Button)`
+const ButtonIconsUser = styled(Button)``;
 
+const ContentInitialNav = styled.div`
+  .link {
+    /* color: white; */
+  }
 `;
-
-const ContentInitialNav =styled.div`
-.link{
-
-  /* color: white; */
-}
-`
 
 export {
   ContentNav,
@@ -66,5 +69,5 @@ export {
   ButtonIconsUser,
   ContentIconsUser,
   ContentSeacrh,
-  ContentInitialNav
+  ContentInitialNav,
 };
