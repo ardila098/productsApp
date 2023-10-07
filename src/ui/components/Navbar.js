@@ -25,7 +25,7 @@ export const Navbar = () => {
           Products
         </Link>
 
-        <NavLink className="link" to="/productsCrud">
+        <NavLink className="link" to="/productsTable">
           Crud
         </NavLink>
       </ContentInitialNav>
