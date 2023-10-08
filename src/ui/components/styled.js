@@ -2,27 +2,37 @@ import { Button } from "antd";
 import styled from "styled-components";
 
 const ContentNav = styled.nav`
+  position: fixed;
+  top: 0px;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  top: 90px;
   gap: 20px;
-  background-color: transparent;
-  position: fixed;
-  transition: transform 0.3s ease-in-out;
+  background-color: rgba(128, 128, 128, 0.2);
+  z-index: 1000;
+  transition: background-color 0.3s ease;
 
   &:hover {
-    transform: translateY(5px);
-    border: 1px solid;
+    background-color: rgba(128, 128, 128, 0.4);
   }
-
   div {
-    flex: auto;
+    display: flex;
+    flex: 1; /* Hace que cada div tenga el mismo tamaño y se reparta el espacio */
+    display: flex;
     padding: 20px;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
   }
 
   .link {
     text-decoration: none;
     cursor: pointer;
+  }
+  .linkOff {
+    text-decoration: none;
+    cursor: pointer;
+    color: red;
   }
 `;
 
@@ -41,25 +51,32 @@ const ContentSeacrh = styled.div`
   }
 `;
 
-const ContentIconsUser = styled.div`
+const ButtonIconsUser = styled(Button)`
+  background-color: transparent;
+  color: white;
+`;
+
+const ContentInitialNav = styled.div`
   display: flex;
-  flex: auto;
-  gap: 15px;
-  align-content: right;
-  align-self: center;
-  align-items: center;
-  justify-content: flex-end;
-  .buttonIcon {
-    font-size: 20px;
-    border: none;
+  justify-content: center;
+  gap: 20px;
+  .link {
+    color: white;
   }
 `;
 
-const ButtonIconsUser = styled(Button)``;
+const ContentIconsUser = styled.div`
+  gap: 15px;
+  display: flex;
+  justify-content: flex-end;
 
-const ContentInitialNav = styled.div`
-  .link {
-    /* color: white; */
+  .icons {
+    display: flex;
+  }
+
+  .buttonIcon {
+    font-size: 20px;
+    border: none;
   }
 `;
 
