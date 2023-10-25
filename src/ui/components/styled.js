@@ -18,11 +18,11 @@ const ContentNav = styled.nav`
   }
   div {
     display: flex;
-    flex: 1; /* Hace que cada div tenga el mismo tamaño y se reparta el espacio */
+    flex: 1; 
     display: flex;
     padding: 20px;
-    align-items: center; /* Centra el contenido verticalmente */
-    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; 
+    justify-content: center; 
   }
 
   .link {

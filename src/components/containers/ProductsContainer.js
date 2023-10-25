@@ -1,12 +1,29 @@
 import React from "react";
 import PropType from "prop-types";
+import { useContext } from "react";
+import {
+  ProductsContext,
+  ProductsProvider,
+} from "../products/context/ProductsContext";
+import HeaderCustom from "../main/HeaderCustom";
+import { Main } from "../products/pages/styled";
+import Products from "../products/components/Products";
 
-const ProductsContainer = ({ data }) => {
-  return <div>
+const ProductsContainer = () => {
+  const { productsCrud } = useContext(ProductsContext);
+  const { products } = productsCrud;
+  console.log(products);
 
-
-    
-  </div>;
+  return (
+    <>
+      <ProductsProvider>
+        <HeaderCustom />
+        <Main>
+          <Products products={products} />
+        </Main>
+      </ProductsProvider>
+    </>
+  );
 };
 
 export default ProductsContainer;

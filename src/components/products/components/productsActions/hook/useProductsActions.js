@@ -4,6 +4,7 @@ const useProductsActions = ({ removeProduct }) => {
   const [modalData, setModalData] = useState({ open: false, id: null });
 
   const handleCreate = () => {
+    console.log("create");
     setModalData({
       open: true,
       id: null,

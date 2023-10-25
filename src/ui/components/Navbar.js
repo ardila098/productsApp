@@ -12,39 +12,15 @@ import {
   ContentSeacrh,
   ContentInitialNav,
 } from "./styled";
-import { useContext, useEffect, useState } from "react";
+import { useContext,} from "react";
 import DataContext from "../../components/context/DataContext";
 
 export const Navbar = () => {
   const { toggleDrawer } = useContext(DataContext);
-  const [mouseOver, setMouseOver] = useState(false);
 
-  const handleMouseMove = () => {
-    setMouseOver(true);
-  };
-
-  const handleMouseLeave = () => {
-    const timeoutId = setTimeout(() => {
-      setMouseOver(false);
-    }, 20);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
 
   return (
-    <ContentNav className="navbar " mouseOver={mouseOver}>
+    <ContentNav className="navbar ">
       <ContentSeacrh className=""></ContentSeacrh>
       <ContentInitialNav>
         <Link className="link" to="/products">

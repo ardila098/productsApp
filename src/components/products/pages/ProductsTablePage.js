@@ -1,10 +1,15 @@
 import React from "react";
-import Products from "../components/Products";
+
+import ProductsTableContainer from "../components/ProductsTableContainer";
+import Logo from "../../main/Logo";
+import { Navbar } from "../../../ui/components/Navbar";
 
 const ProductsTablePage = () => {
   return (
     <div>
-      <Products />
+      <Logo />
+      <Navbar />
+      <ProductsTableContainer />
     </div>
   );
 };
