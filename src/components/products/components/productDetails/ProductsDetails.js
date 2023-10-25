@@ -52,13 +52,19 @@ const ProductsDetails = () => {
                   alt=""
                   onClick={() => onChangeImgInitial(img)}
                 />
+                ;
               </RowImgPrev>
             ))}
           </ContentImgsPrev>
         </ContentSliderDetails>
         <ContentEspecificationProduct>
-          <NameDetails>{product.name}</NameDetails>
-          <PriceDetails></PriceDetails>
+          <NameDetails>
+{/* {product.name} */}
+          </NameDetails>
+          <PriceDetails>
+            
+          </PriceDetails>
+
         </ContentEspecificationProduct>
       </ContentDetailsProduct>
     </>

@@ -11,6 +11,7 @@ const ContentDetailsProduct = styled.div`
 
 const ContentSliderDetails = styled.div`
   display: flex;
+  gap: 20px;
 `;
 
 const ContentInitialImg = styled.div`
@@ -26,6 +27,7 @@ const ContentInitialImg = styled.div`
 const ContentImgsPrev = styled.div`
   display: flex;
   flex-direction: column;
+  row-gap: 10px;
 `;
 
 const RowImgPrev = styled.div`
