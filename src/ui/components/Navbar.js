@@ -12,15 +12,14 @@ import {
   ContentSeacrh,
   ContentInitialNav,
 } from "./styled";
-import { useContext,} from "react";
+import { useContext } from "react";
 import DataContext from "../../components/context/DataContext";
 
-export const Navbar = () => {
+export const Navbar = ({ styleNav }) => {
   const { toggleDrawer } = useContext(DataContext);
 
-
   return (
-    <ContentNav className="navbar ">
+    <ContentNav className="navbar" styleNav={styleNav}>
       <ContentSeacrh className=""></ContentSeacrh>
       <ContentInitialNav>
         <Link className="link" to="/products">

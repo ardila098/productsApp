@@ -7,7 +7,7 @@ const ProductDetailsPage = () => {
   return (
     <>
       <Logo />
-      <Navbar/>
+      <Navbar styleNav={true} />
       <ProductDetailsContainer />
     </>
   );

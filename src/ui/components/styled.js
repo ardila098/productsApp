@@ -2,32 +2,36 @@ import { Button } from "antd";
 import styled from "styled-components";
 
 const ContentNav = styled.nav`
-  position: fixed;
+  position: ${(props) => (props.styleNav ? "" : "fixed")};
   top: 0px;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   top: 90px;
   gap: 20px;
-  background-color: rgba(128, 128, 128, 0.2);
   z-index: 1000;
   transition: background-color 0.3s ease;
+  background-color: ${(props) =>
+    props.styleNav ? "white" : "rgba(128, 128, 128, 0.2)"};
+  color: ${(props) => (props.styleNav ? "black" : "white")};
 
   &:hover {
-    background-color: rgba(128, 128, 128, 0.4);
+    background-color: ${(props) =>
+      props.styleNav ? "transparent" : "rgba(128, 128, 128, 0.4)"};
   }
   div {
     display: flex;
-    flex: 1; 
+    flex: 1;
     display: flex;
     padding: 20px;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center;
+    justify-content: center;
   }
 
   .link {
     text-decoration: none;
     cursor: pointer;
+    color: ${(props) => (props.styleNav ? "black" : "white")};
   }
   .linkOff {
     text-decoration: none;
@@ -60,9 +64,6 @@ const ContentInitialNav = styled.div`
   display: flex;
   justify-content: center;
   gap: 20px;
-  .link {
-    color: white;
-  }
 `;
 
 const ContentIconsUser = styled.div`
@@ -80,6 +81,9 @@ const ContentIconsUser = styled.div`
   }
 `;
 
+
+
+
 export {
   ContentNav,
   InputSeacrh,
@@ -87,4 +91,5 @@ export {
   ContentIconsUser,
   ContentSeacrh,
   ContentInitialNav,
+  
 };
