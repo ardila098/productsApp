@@ -19,10 +19,10 @@ const ContentProducts = styled.div`
 
 const ContentImgProduct = styled.div`
   display: flex;
-  border-radius: 10px;
+  border-radius: 5px;
   img {
     width: 250px;
-    height: 300px;
+    height: 350px;
     transition: transform 0.3s ease;
   }
 
