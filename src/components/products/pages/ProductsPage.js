@@ -4,6 +4,7 @@ import Slider from "../../sliders/Slider";
 import { Navbar } from "../../../ui/components/Navbar";
 import WarningNav from "../../../ui/components/WarningNav";
 
+
 const ProductsPage = () => {
   return (
     <>
