@@ -1,4 +1,5 @@
 import React from "react";
+import { ContentSlider } from "./style";
 
 const Slider = () => {
   const video = {
@@ -6,23 +7,15 @@ const Slider = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "700px",
-        marginBottom: "50px",
-      }}
-    >
+    <ContentSlider>
       <video
         src={video.url}
-        width="100%"
-        height="100%"
         style={{ objectFit: "cover" }}
         autoPlay
         muted
         loop
       />
-    </div>
+    </ContentSlider>
   );
 };
 

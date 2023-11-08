@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ProductsContext } from "../context/ProductsContext";
 import {
   CardProduct,
+  ContenCustom,
   ContentImgProduct,
   ContentProducts,
   ItemName,
@@ -21,8 +22,8 @@ const Products = () => {
   };
 
   return (
-    <>
-      <TitleContentProduct style={{ textAlign: "center", fontFamily: "" }}>
+    <ContenCustom>
+      <TitleContentProduct className="title">
         Lista de produtos
       </TitleContentProduct>
       <ContentProducts>
@@ -40,14 +41,14 @@ const Products = () => {
                 onClick={() => redirectToProductDetails(product._id)}
               >
                 <img src={product.imgs[0].url} alt={product.description} />
+                <ItemName>{product.name}</ItemName>
+                <ItemPrice>${product.price.toFixed(2)}</ItemPrice>
               </ContentImgProduct>
-              <ItemName>{product.name}</ItemName>
-              <ItemPrice>${product.price.toFixed(2)}</ItemPrice>
             </CardProduct>
           );
         })}
       </ContentProducts>
-    </>
+    </ContenCustom>
   );
 };
 

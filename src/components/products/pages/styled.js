@@ -14,6 +14,7 @@ const Main = styled.div`
   justify-content: center;
   flex-direction: column;
   justify-content: center;
+  min-width: 768px;
 `;
 
 export { ContentInitialProducts, Main };

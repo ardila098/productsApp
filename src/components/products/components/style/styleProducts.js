@@ -11,6 +11,7 @@ const ContentProducts = styled.div`
   margin-bottom: 30px;
   font-family: "Montserrat", sans-serif;
   margin-top: 70px;
+  min-width: 656px;
   .image-container {
     position: relative;
     overflow: hidden;
@@ -19,7 +20,12 @@ const ContentProducts = styled.div`
 
 const ContentImgProduct = styled.div`
   display: flex;
+  flex-direction: column;
   border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  cursor: pointer;
+
   img {
     width: 250px;
     height: 350px;
@@ -54,8 +60,17 @@ const ItemPrice = styled.span`
   margin-top: 10px;
 `;
 
-const TitleContentProduct = styled.h1`
+const TitleContentProduct = styled.span`
   font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  text-align: center;
+`;
+
+const ContenCustom = styled.div`
+  min-height: 768px;
+  .title{
+    background-color: aliceblue;
+  }
 `;
 
 export {
@@ -65,4 +80,5 @@ export {
   ItemName,
   ItemPrice,
   TitleContentProduct,
+  ContenCustom,
 };
