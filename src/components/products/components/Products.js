@@ -7,9 +7,10 @@ import {
   ContentProducts,
   ItemName,
   ItemPrice,
-  TitleContentProduct,
 } from "./style/styleProducts";
 import { useNavigate } from "react-router-dom";
+import TitleCustom from "../../main/TitleCustom";
+import ButtonAddToCart from "../../buttonsCustom/ButtonAddToCart";
 
 const Products = () => {
   const { productsCrud } = useContext(ProductsContext);
@@ -23,9 +24,7 @@ const Products = () => {
 
   return (
     <ContenCustom>
-      <TitleContentProduct className="title">
-        Lista de produtos
-      </TitleContentProduct>
+      <TitleCustom title={"Nuestros Productos"} />
       <ContentProducts>
         {products.map((product) => {
           return (
@@ -43,6 +42,7 @@ const Products = () => {
                 <img src={product.imgs[0].url} alt={product.description} />
                 <ItemName>{product.name}</ItemName>
                 <ItemPrice>${product.price.toFixed(2)}</ItemPrice>
+                <ButtonAddToCart textBtn={"ADD TO CART"} name={"addToCart"} />
               </ContentImgProduct>
             </CardProduct>
           );
