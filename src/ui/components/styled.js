@@ -78,14 +78,16 @@ const StyledLogo = styled.div`
 
 const MenuItems = styled(Row)`
   display: flex;
-  flex-direction: row; /* Alinea los elementos en una columna */
-  align-items: center; /* Centra verticalmente */
+  flex-direction: row;
+  align-items: center;
   .link {
     text-decoration: none;
     cursor: pointer;
 
     font-size: 18px;
     color: ${(props) => (props.styleNav ? "white" : "black")};
+  font-family: "Montserrat", sans-serif;
+
   }
   .linkOff {
     text-decoration: none;
@@ -120,6 +122,9 @@ const IconsContainer = styled.div`
     align-items: center;
     width: 100px;
   }
+  button {
+    border: none;
+  }
 `;
 
 const ContentMenu = styled.div`
@@ -149,12 +154,12 @@ const WarningNavContent = styled.div`
   width: 100%;
   background-color: black;
   height: 40px;
-text-align: center;
-min-width: 768px;
+  text-align: center;
+  min-width: 768px;
 `;
 
 const MessageWarnign = styled.span`
-color: white;
+  color: white;
 `;
 
 export {

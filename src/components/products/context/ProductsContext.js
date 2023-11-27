@@ -2,26 +2,34 @@ import React, { createContext, useMemo } from "react";
 import PropTypes from "prop-types";
 import useProducts from "../hooks/useProducts";
 import useProductsActions from "../components/productsActions/hook/useProductsActions";
+import useCart from "../../../cart/hooks/useCart";
+import useDrawerCart from "../../drawer/hooks/useDrawerCart";
 
 export const ProductsContext = createContext();
 
-const useContextValue = (initialData) => {
+const useContextValue = () => {
   const productsCrud = useProducts();
+  const drawerShoppingCart = useDrawerCart();
+  const shoppingCart = useCart();
   const productsActions = useProductsActions({
     removeProduct: productsCrud.removeProduct,
   });
 
-  productsActions.data = initialData;
-
   const contextValue = useMemo(() => {
-    return { productsCrud, productsActions, initialData };
-  }, [productsCrud, productsActions, initialData]);
+    return {
+      productsCrud,
+      productsActions,
+
+      drawerShoppingCart,
+      shoppingCart,
+    };
+  }, [productsCrud, productsActions, drawerShoppingCart, shoppingCart]);
 
   return contextValue;
 };
 
-export const ProductsProvider = ({ children, initialData }) => {
-  const contextValue = useContextValue(initialData);
+export const ProductsProvider = ({ children }) => {
+  const contextValue = useContextValue();
 
   return (
     <ProductsContext.Provider value={contextValue}>
@@ -32,5 +40,4 @@ export const ProductsProvider = ({ children, initialData }) => {
 
 ProductsProvider.propTypes = {
   children: PropTypes.node,
-  initialData: PropTypes.any,
 };

@@ -24,6 +24,8 @@ const ContainerCount = styled(Row)`
   align-items: center;
   height: 40px;
   margin-bottom: 10px;
+  border: ${(props) => (props.counterCart ? "none" : "1px solid")};
+
 `;
 
 export { StyleSelectSize, ContentSelect, ContainerCount };

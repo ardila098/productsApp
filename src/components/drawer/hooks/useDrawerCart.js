@@ -5,6 +5,7 @@ const useDrawerCart = () => {
 
   console.log(isOpen);
   const toggleDrawer = () => {
+    console.log('open ')
     setIsOpen(true);
   };
 

@@ -1,14 +1,12 @@
 import React from "react";
 import PropType from "prop-types";
+import { Trash } from "react-feather";
 import { ButtonRemoveProduct } from "./styled";
 
-const ButtonDeleteProduct = ({handleDelete}) => {
+const ButtonDeleteProduct = ({ handleDelete }) => {
   return (
     <>
-      <ButtonRemoveProduct
-        onClick={() => handleDelete()}
-        
-      />
+      <ButtonRemoveProduct icon={<Trash />} onClick={() => handleDelete()} />
     </>
   );
 };

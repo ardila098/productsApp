@@ -2,13 +2,12 @@ import PropType from "prop-types";
 import React from "react";
 import { ButtonAddToCartStyled } from "./style";
 
-const ButtonAddToCart = ({ textBtn, name }) => {
+const ButtonAddToCart = ({ textBtn, onChange }) => {
   return (
     <div>
-      <ButtonAddToCartStyled key="submit" htmlType="submit" name={name}>
+      <ButtonAddToCartStyled onClick={onChange}>
         {textBtn}
       </ButtonAddToCartStyled>
-      
     </div>
   );
 };
@@ -17,4 +16,5 @@ export default ButtonAddToCart;
 
 ButtonAddToCart.propType = {
   name: PropType.string,
+  onChange: PropType.func,
 };

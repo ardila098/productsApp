@@ -11,12 +11,13 @@ import {
 import { useNavigate } from "react-router-dom";
 import TitleCustom from "../../main/TitleCustom";
 import ButtonAddToCart from "../../buttonsCustom/ButtonAddToCart";
+import Search from "../../search/Search";
 
 const Products = () => {
-  const { productsCrud } = useContext(ProductsContext);
+  const { productsCrud, shoppingCart } = useContext(ProductsContext);
+  const { onAddToCart } = shoppingCart;
   const { products } = productsCrud;
   const navigate = useNavigate();
-  console.log(products);
 
   const redirectToProductDetails = (productId) => {
     navigate(`/product/${productId}`);
@@ -25,6 +26,7 @@ const Products = () => {
   return (
     <ContenCustom>
       <TitleCustom title={"Nuestros Productos"} />
+      <Search />
       <ContentProducts>
         {products.map((product) => {
           return (
@@ -37,12 +39,18 @@ const Products = () => {
               <ContentImgProduct
                 key={product.imgs[0]._id}
                 className="image-container"
-                onClick={() => redirectToProductDetails(product._id)}
               >
-                <img src={product.imgs[0].url} alt={product.description} />
+                <img
+                  src={product.imgs[0].url}
+                  alt={product.description}
+                  onClick={() => redirectToProductDetails(product._id)}
+                />
                 <ItemName>{product.name}</ItemName>
                 <ItemPrice>${product.price.toFixed(2)}</ItemPrice>
-                <ButtonAddToCart textBtn={"ADD TO CART"} name={"addToCart"} />
+                <ButtonAddToCart
+                  textBtn={"ADD TO CART"}
+                  onChange={() => onAddToCart({ ...product, quantity: 1 })}
+                />
               </ContentImgProduct>
             </CardProduct>
           );

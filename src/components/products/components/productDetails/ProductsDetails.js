@@ -38,8 +38,9 @@ const arraySize = {
 const ProductsDetails = () => {
   const id = useParams();
   const [form] = Form.useForm();
-  const { productsCrud } = useContext(ProductsContext);
+  const { productsCrud, shoppingCart } = useContext(ProductsContext);
   const { getProductById } = productsCrud;
+  const { onAddToCart } = shoppingCart;
   const [dataCount, setDataCount] = useState();
   const [product, setproduct] = useState();
   const [selectSizes, setSelectSizes] = useState({
@@ -64,11 +65,12 @@ const ProductsDetails = () => {
     const data = form.getFieldValue();
     console.log(data);
     const dataForm = {
-      product,
+      ...product,
       bra: data.bra,
       pantie: data.pantie,
-      counter: dataCount,
+      quantity: dataCount,
     };
+    onAddToCart(dataForm);
     console.log(dataForm);
   };
   const onChangeImgInitial = (img) => {

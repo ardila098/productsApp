@@ -7,15 +7,15 @@ const ContentActionsTableProducts = styled.div`
 `;
 
 const ButtonAddPoduct = styled(Button)`
-  background: #abc4a1;
+  background: #E6F2C3;
 `;
 
 const ButtonUpdateProduct = styled(Button)`
-  background: #adb4d1;
+  background: #c3f2e7;
 `;
 
 const ButtonRemoveProduct = styled(Button)`
-  background: #add4c1;
+  background: #F3DDD6;
 `;
 
 export {

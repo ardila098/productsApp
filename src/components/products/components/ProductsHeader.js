@@ -1,11 +1,14 @@
 import React from "react";
 import ButtonCreateProduct from "./productsActions/buttonsProductsActions.js/ButtonCreateProduct";
+import { ContentHeader } from "./style";
 
 const ProductsHeader = () => {
   return (
-    <div style={{ marginBottom: "50px" }}>
-      <ButtonCreateProduct />
-    </div>
+    <ContentHeader>
+      <div className="container">
+        <ButtonCreateProduct />
+      </div>
+    </ContentHeader>
   );
 };
 

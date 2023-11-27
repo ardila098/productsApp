@@ -53,7 +53,13 @@ const ProductsTable = () => {
         <>
           {imgs.map((img) => (
             <>
-              <img key={img._id} src={img.url} alt="Product" width="50" />
+              <img
+                key={img._id}
+                src={img.url}
+                alt="Product"
+                width="50"
+                height="60"
+              />
             </>
           ))}
         </>
@@ -70,7 +76,13 @@ const ProductsTable = () => {
     },
   ];
 
-  return <Table columns={columns} dataSource={products} />;
+  return (
+    <Table
+      columns={columns}
+      dataSource={products}
+      style={{ minWidth: "765px" }}
+    />
+  );
 };
 
 export default ProductsTable;

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ButtonAddPoduct } from "./styled";
 import { ProductsContext } from "../../../context/ProductsContext";
+import { Plus } from "react-feather";
 import ModalEditProduct from "../../modals/ModalEditProduct";
 
 const ButtonCreateProduct = () => {
@@ -9,7 +10,7 @@ const ButtonCreateProduct = () => {
 
   return (
     <>
-      <ButtonAddPoduct onClick={() => handleCreate()} />
+      <ButtonAddPoduct onClick={() => handleCreate()} icon={<Plus />} />
       <ModalEditProduct data={modalData} close={handleClose} />
     </>
   );

@@ -21,17 +21,18 @@ import {
   MenuItems,
 } from "./styled";
 import { useContext } from "react";
-import DataContext from "../../components/context/DataContext";
-import { Col, Drawer, Menu, Row } from "antd";
+import { Button, Col, Drawer, Menu } from "antd";
 import { useState } from "react";
 import Logo from "../../components/main/Logo";
 import { Link, NavLink } from "react-router-dom";
+import { ProductsContext } from "../../components/products/context/ProductsContext";
 // import Logo from "../../components/main/Logo";
 // import { Button, Menu, Row } from "antd";
 
 export const Navbar = ({ styleNav }) => {
   const [visible, setVisible] = useState(false);
-  // const { toggleDrawer } = useContext(DataContext);
+  const { drawerShoppingCart } = useContext(ProductsContext);
+  const { toggleDrawer } = drawerShoppingCart;
 
   const showDrawer = () => {
     setVisible(true);
@@ -68,15 +69,15 @@ export const Navbar = ({ styleNav }) => {
         </MenuItems>
       </ContentMenu>
       <IconsContainer>
-        <Col xs={2} className="icons">
-          <ShoppingCartOutlined
-            style={{ fontSize: "25px", marginRight: "10px" }}
-          />
+        <Col xs={3} className="icons">
+          <Button onClick={toggleDrawer}>
+            <ShoppingCartOutlined style={{ fontSize: "25px" }} />
+          </Button>
         </Col>
-        <Col xs={2} className="icons">
-          <UserOutlined style={{ fontSize: "25px", marginRight: "10px" }} />
+        <Col xs={3} className="icons">
+          <UserOutlined style={{ fontSize: "25px" }} />
         </Col>
-        <Col xs={2} className="icons">
+        <Col xs={3} className="icons">
           <HeartOutlined style={{ fontSize: "25px" }} />
         </Col>
       </IconsContainer>

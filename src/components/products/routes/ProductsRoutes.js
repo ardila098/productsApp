@@ -6,6 +6,7 @@ import { ProductsProvider } from "../context/ProductsContext";
 
 import ProductsPage from "../pages/ProductsPage";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
+import DrawerCart from "../../drawer/DrawerCart";
 
 const ProductsRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const ProductsRoutes = () => {
 
           <Route path="/" element={<Navigate to={"/products"} />} />
         </Routes>
+        <DrawerCart />
       </ProductsProvider>
     </div>
   );
