@@ -7,7 +7,7 @@ const ContentNav = styled.nav`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  top: 90px;
+
   gap: 20px;
   z-index: 1000;
   transition: background-color 0.3s ease;
@@ -57,12 +57,19 @@ const ContentIconsUser = styled.div`
 `;
 
 const StyledNav = styled.div`
+  position: ${(props) => (props.visibleNav ? "fixed" : "")};
+  z-index: 1000;
+  width: 100%;
   display: flex;
   justify-content: center;
   min-width: 768px;
   height: 80px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  /* background-color: #F7F9F9; */
+  background: rgba(255, 255, 255, 0.9);
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
+    box-shadow: rgbargba(255, 255, 255, 0.3) 0px 30px 60px -12px inset, transparent 0px 18px 36px -18px inset;
+    border: none;
   div {
     flex: 1;
   }
@@ -86,8 +93,7 @@ const MenuItems = styled(Row)`
 
     font-size: 18px;
     color: ${(props) => (props.styleNav ? "white" : "black")};
-  font-family: "Montserrat", sans-serif;
-
+    font-family: "Montserrat", sans-serif;
   }
   .linkOff {
     text-decoration: none;
@@ -106,7 +112,10 @@ const MobileNavButton = styled(Button)`
   border: none;
   justify-content: left;
   margin-left: 0px;
-
+  background-color: transparent;
+  box-shadow: none;
+  align-items: center;
+  justify-content: center;
   @media (min-width: 769px) {
     display: none;
   }
@@ -124,6 +133,8 @@ const IconsContainer = styled.div`
   }
   button {
     border: none;
+    box-shadow: none;
+    background: transparent;
   }
 `;
 

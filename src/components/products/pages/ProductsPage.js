@@ -8,7 +8,7 @@ const ProductsPage = () => {
   return (
     <>
       <Navbar />
-      <WarningNav />
+      {/* <WarningNav /> */}
       <Slider />
       <ProductsContainer />
     </>

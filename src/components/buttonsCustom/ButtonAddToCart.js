@@ -1,14 +1,21 @@
 import PropType from "prop-types";
-import React from "react";
-import { ButtonAddToCartStyled } from "./style";
 
-const ButtonAddToCart = ({ textBtn, onChange }) => {
+import { ButtonAddToCartStyled, ContentAddBtn } from "./style";
+import { ShoppingOutlined } from "@ant-design/icons";
+
+
+const ButtonAddToCart = ({ textBtn, onChange, }) => {
+  
+
+
+
   return (
-    <div>
-      <ButtonAddToCartStyled onClick={onChange}>
-        {textBtn}
-      </ButtonAddToCartStyled>
-    </div>
+    <ContentAddBtn >
+      <ButtonAddToCartStyled
+        onClick={onChange}
+        icon={<ShoppingOutlined style={{ fontSize: "18px" }} />}
+      ></ButtonAddToCartStyled>
+    </ContentAddBtn>
   );
 };
 

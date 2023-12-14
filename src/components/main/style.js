@@ -16,7 +16,6 @@ const ContentTitleCustom = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid black;
 
   padding: 20px;
   margin: 20px;

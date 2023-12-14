@@ -1,6 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ProductsContext } from "../context/ProductsContext";
 import {
+  HeartOutlined,
+  // EyeOutlined,
+} from "@ant-design/icons";
+import {
+  ButtonsContainer,
   CardProduct,
   ContenCustom,
   ContentImgProduct,
@@ -11,13 +16,23 @@ import {
 import { useNavigate } from "react-router-dom";
 import TitleCustom from "../../main/TitleCustom";
 import ButtonAddToCart from "../../buttonsCustom/ButtonAddToCart";
-import Search from "../../search/Search";
+import { Button } from "antd";
 
 const Products = () => {
   const { productsCrud, shoppingCart } = useContext(ProductsContext);
   const { onAddToCart } = shoppingCart;
   const { products } = productsCrud;
   const navigate = useNavigate();
+  const [isHoverId, setIsHoverId] = useState();
+
+  const handleMouseEnter = (productId) => {
+    console.log(productId);
+    setIsHoverId(productId);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHoverId(null);
+  };
 
   const redirectToProductDetails = (productId) => {
     navigate(`/product/${productId}`);
@@ -26,7 +41,6 @@ const Products = () => {
   return (
     <ContenCustom>
       <TitleCustom title={"Nuestros Productos"} />
-      <Search />
       <ContentProducts>
         {products.map((product) => {
           return (
@@ -37,18 +51,32 @@ const Products = () => {
                   </div>
                 ))} */}
               <ContentImgProduct
+                onMouseEnter={() => handleMouseEnter(product._id)}
+                onMouseLeave={handleMouseLeave}
                 key={product.imgs[0]._id}
                 className="image-container"
               >
                 <img
-                  src={product.imgs[0].url}
+                  src={
+                    isHoverId === product._id && product.imgs[1]
+                      ? product.imgs[1].url
+                      : product.imgs[0].url
+                  }
                   alt={product.description}
                   onClick={() => redirectToProductDetails(product._id)}
                 />
+                <ButtonsContainer>
+                  <Button>
+                    <HeartOutlined style={{ fontSize: "18px" }} />
+                  </Button>
+                  {/* <Button>
+                    <EyeOutlined style={{ fontSize: "18px" }} />
+                  </Button> */}
+                </ButtonsContainer>
+
                 <ItemName>{product.name}</ItemName>
-                <ItemPrice>${product.price.toFixed(2)}</ItemPrice>
+                <ItemPrice>${product.price.toFixed(2)} COP</ItemPrice>
                 <ButtonAddToCart
-                  textBtn={"ADD TO CART"}
                   onChange={() => onAddToCart({ ...product, quantity: 1 })}
                 />
               </ContentImgProduct>

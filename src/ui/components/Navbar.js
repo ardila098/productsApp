@@ -1,9 +1,12 @@
 import {
-  ShoppingCartOutlined,
+  ShoppingOutlined,
   UserOutlined,
   HeartOutlined,
   MenuOutlined,
+  SearchOutlined,
 } from "@ant-design/icons";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+
 // // import { Link, NavLink } from "react-router-dom";
 
 import {
@@ -26,11 +29,15 @@ import { useState } from "react";
 import Logo from "../../components/main/Logo";
 import { Link, NavLink } from "react-router-dom";
 import { ProductsContext } from "../../components/products/context/ProductsContext";
+import ModalSeacrh from "../../components/search/ModalSeacrh";
 // import Logo from "../../components/main/Logo";
 // import { Button, Menu, Row } from "antd";
 
 export const Navbar = ({ styleNav }) => {
   const [visible, setVisible] = useState(false);
+  const [visibleNav, setVisibleNav] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [showModalSearch, setShowModalSearch] = useState();
   const { drawerShoppingCart } = useContext(ProductsContext);
   const { toggleDrawer } = drawerShoppingCart;
 
@@ -42,8 +49,28 @@ export const Navbar = ({ styleNav }) => {
     setVisible(false);
   };
 
+  const onshowModalSeacrh = () => {
+    setShowModalSearch(true);
+  };
+
+  const onCloseModalSeacrh = () => {
+    setShowModalSearch(false);
+  };
+
+  useScrollPosition(({ currPos }) => {
+    const isScrolledDown = currPos.y > prevScrollPos;
+
+    if (isScrolledDown) {
+      setVisibleNav(true);
+    } else {
+      setVisibleNav(false);
+    }
+
+    setPrevScrollPos(currPos.y);
+  });
+
   return (
-    <StyledNav>
+    <StyledNav visibleNav={visibleNav}>
       <ContentMobileNav>
         <MobileNavButton icon={<MenuOutlined />} onClick={showDrawer} />
       </ContentMobileNav>
@@ -70,15 +97,20 @@ export const Navbar = ({ styleNav }) => {
       </ContentMenu>
       <IconsContainer>
         <Col xs={3} className="icons">
-          <Button onClick={toggleDrawer}>
-            <ShoppingCartOutlined style={{ fontSize: "25px" }} />
+          <Button onClick={onshowModalSeacrh}>
+            <SearchOutlined style={{ fontSize: "18px" }} />
           </Button>
         </Col>
         <Col xs={3} className="icons">
-          <UserOutlined style={{ fontSize: "25px" }} />
+          <Button onClick={toggleDrawer}>
+            <ShoppingOutlined style={{ fontSize: "18px" }} />
+          </Button>
         </Col>
         <Col xs={3} className="icons">
-          <HeartOutlined style={{ fontSize: "25px" }} />
+          <UserOutlined style={{ fontSize: "18px" }} />
+        </Col>
+        <Col xs={3} className="icons">
+          <HeartOutlined style={{ fontSize: "18px" }} />
         </Col>
       </IconsContainer>
       <Drawer
@@ -90,13 +122,22 @@ export const Navbar = ({ styleNav }) => {
       >
         <Menu mode="vertical" theme="light">
           <StyledMenuItem key="inicio" className="link" to="/products">
-            Inicio
+            Home
           </StyledMenuItem>
-          <StyledMenuItem key="productos">Productos</StyledMenuItem>
-          <StyledMenuItem key="ofertas">Ofertas</StyledMenuItem>
+          <StyledMenuItem key="productos">
+            <Link className="link" to="/products">
+              Productos
+            </Link>
+          </StyledMenuItem>
+          <StyledMenuItem key="ofertas">
+            <Link className="link" to="/productsTable">
+              Crud
+            </Link>
+          </StyledMenuItem>
           <StyledMenuItem key="contacto">Contacto</StyledMenuItem>
         </Menu>
       </Drawer>
+      <ModalSeacrh show={showModalSearch} onClose={onCloseModalSeacrh} />
     </StyledNav>
   );
 };
