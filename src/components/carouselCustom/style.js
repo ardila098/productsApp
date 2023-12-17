@@ -30,12 +30,13 @@ const TextOff = styled.span`
 `;
 
 const ContainerItemCarousel = styled.div`
+display: flex;
   color: black;
   font-family: "Montserrat", sans-serif;
 background: white;
 border-radius: 10px;
-  width: 20rem;
-
+  width: 22rem;
+justify-content: center;
   
   img {
     max-width: 220px;

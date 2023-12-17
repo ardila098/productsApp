@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropType from "prop-types";
 import CarouselCustom from "../../../../carouselCustom/CarouselCustom";
+import { ProductsContext } from "../../../context/ProductsContext";
 
-const ResultSearch = ({ data, onClose }) => {
+const ResultSearch = ({ onClose }) => {
+  const { searchCustom } = useContext(ProductsContext);
+  const { searchResults } = searchCustom;
   return (
     <>
-      <CarouselCustom items={data} onClose={onClose} />
+      <CarouselCustom items={searchResults} onClose={onClose} />
     </>
   );
 };
