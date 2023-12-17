@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropType from "prop-types";
 import { SearchOutlined } from "@ant-design/icons";
 import {
@@ -8,8 +8,7 @@ import {
   SearchInput,
 } from "./styled";
 import { ProductsContext } from "../products/context/ProductsContext";
-import { useContext } from "react";
-import ResultSearch from "./ResultSearch";
+import ResultSearch from "../products/components/modals/modalSearch/ResultSearch";
 
 const SearchCustom = ({ onClose }) => {
   const [productsSeacrh, setProductsSearch] = useState([]);
@@ -52,7 +51,6 @@ const SearchCustom = ({ onClose }) => {
           </SearchButton>
         </ContentSearch>
         <ResultSearch data={searchResults} onClose={onClose} />
-        
       </ContenSearchFirst>
     </>
   );

@@ -29,7 +29,8 @@ import { useState } from "react";
 import Logo from "../../components/main/Logo";
 import { Link, NavLink } from "react-router-dom";
 import { ProductsContext } from "../../components/products/context/ProductsContext";
-import ModalSeacrh from "../../components/search/ModalSeacrh";
+import ModalSeacrh from "../../components/products/components/modals/modalSearch/ModalSeacrh";
+
 // import Logo from "../../components/main/Logo";
 // import { Button, Menu, Row } from "antd";
 

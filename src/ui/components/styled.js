@@ -66,6 +66,8 @@ const StyledNav = styled.div`
   height: 80px;
   /* background-color: #F7F9F9; */
   background: rgba(255, 255, 255, 0.9);
+  background: transparent;
+
   /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
     box-shadow: rgbargba(255, 255, 255, 0.3) 0px 30px 60px -12px inset, transparent 0px 18px 36px -18px inset;

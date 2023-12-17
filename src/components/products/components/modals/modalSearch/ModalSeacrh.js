@@ -1,7 +1,8 @@
 import PropType from "prop-types";
 import React from "react";
+import SearchCustom from "../../../../searchCustom/SearchCustom";
 import { ContentSearchCustom, ModalSearchStyle } from "./styled";
-import SearchCustom from "./SearchCustom";
+
 
 const ModalSeacrh = ({ show, onClose }) => {
   return (
