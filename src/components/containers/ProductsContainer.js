@@ -2,7 +2,6 @@ import React from "react";
 import PropType from "prop-types";
 import { useContext } from "react";
 import { ProductsContext } from "../products/context/ProductsContext";
-import HeaderCustom from "../main/HeaderCustom";
 import { Main } from "../products/pages/styled";
 import Products from "../products/components/Products";
 
@@ -13,7 +12,7 @@ const ProductsContainer = () => {
 
   return (
     <>
-      <HeaderCustom />
+     
       <Main>
         <Products products={products} />
       </Main>

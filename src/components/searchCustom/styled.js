@@ -11,8 +11,9 @@ const ContentSearch = styled.div`
   align-items: center;
   justify-content: center;
   font-family: "Montserrat", sans-serif;
-  border-bottom: 1px solid #f8f9f9;
   justify-content: center;
+  border-bottom: ${(props) => (props.modePage ? "1px solid black" : "1px solid #f8f9f9")};
+
 `;
 
 const SearchInput = styled.input`
@@ -22,14 +23,17 @@ const SearchInput = styled.input`
   outline: none;
   padding: 5px 10px;
   font-size: 25px;
-  color: #f8f9f9;
+  border-bottom: ${(props) => (props.modePage ? "1px solid black" : "1px solid #f8f9f9")};
+
+  font-size: ${(props) => (props.modePage ? "18px" : "25px")};
+  color: ${(props) => (props.modePage ? "black" : "#f8f9f9")};
   ::placeholder {
-    color: #f8f9f9;
+    color: ${(props) => (props.modePage ? "black" : "#f8f9f9")};
   }
 `;
 
 const SearchIcon = styled.div`
-  color: #f8f9f9;
+  color: ${(props) => (props.modePage ? "black" : "#f8f9f9")};
   width: 15px;
 
   width: 20px;
@@ -46,11 +50,11 @@ const ContenSearchFirst = styled.div`
   flex-direction: column;
   margin: auto;
   align-items: center;
-  `;
+`;
 
 const ModalSearchStyle = styled(Modal)`
   width: 100%;
-   .ant-modal-root {
+  .ant-modal-root {
     background-color: red !important;
   }
   .ant-modal-content {

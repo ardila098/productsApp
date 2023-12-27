@@ -1,6 +1,7 @@
 import { Button, Menu, Row } from "antd";
 import styled from "styled-components";
 
+// font-family: 'Poppins', sans-serif;
 const ContentNav = styled.nav`
   position: ${(props) => (props.styleNav ? "fixed" : "")};
   top: 0px;
@@ -58,6 +59,7 @@ const ContentIconsUser = styled.div`
 
 const StyledNav = styled.div`
   position: ${(props) => (props.visibleNav ? "fixed" : "")};
+  top: 0px;
   z-index: 1000;
   width: 100%;
   display: flex;
@@ -66,12 +68,13 @@ const StyledNav = styled.div`
   height: 80px;
   /* background-color: #F7F9F9; */
   background: rgba(255, 255, 255, 0.9);
-  background: transparent;
+  /* background: transparent; */
 
   /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
-    box-shadow: rgbargba(255, 255, 255, 0.3) 0px 30px 60px -12px inset, transparent 0px 18px 36px -18px inset;
-    border: none;
+  box-shadow: rgbargba(255, 255, 255, 0.3) 0px 30px 60px -12px inset,
+    transparent 0px 18px 36px -18px inset;
+  border: none;
   div {
     flex: 1;
   }
@@ -95,7 +98,7 @@ const MenuItems = styled(Row)`
 
     font-size: 18px;
     color: ${(props) => (props.styleNav ? "white" : "black")};
-    font-family: "Montserrat", sans-serif;
+    /* font-family: "Montserrat", sans-serif; */
   }
   .linkOff {
     text-decoration: none;

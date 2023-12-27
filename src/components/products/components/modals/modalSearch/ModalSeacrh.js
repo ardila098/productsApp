@@ -1,12 +1,13 @@
 import PropType from "prop-types";
 import React from "react";
-import SearchCustom from "../../../../searchCustom/SearchCustom";
+
 import {
   ContenSearchFirst,
   ContentSearchCustom,
   ModalSearchStyle,
 } from "./styled";
 import ResultSearch from "./ResultSearch";
+import SearchCustom from "../../../../searchCustom/SearchCustom";
 
 const ModalSeacrh = ({ show, onClose }) => {
   return (
@@ -20,7 +21,7 @@ const ModalSeacrh = ({ show, onClose }) => {
     >
       <ContentSearchCustom>
         <ContenSearchFirst>
-          <SearchCustom onClose={onClose} />
+          <SearchCustom onClose={onClose} modePage={false}/>
           <ResultSearch />
         </ContenSearchFirst>
       </ContentSearchCustom>
