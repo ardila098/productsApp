@@ -12,7 +12,6 @@ const ProductsContainer = () => {
 
   return (
     <>
-     
       <Main>
         <Products products={products} />
       </Main>

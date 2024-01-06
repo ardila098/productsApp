@@ -8,8 +8,8 @@ const AppRouter = () => {
     <div>
       <Routes>
         <Route path="/*" element={<ProductsRoutes />} />
+       
       </Routes>
-     
     </div>
   );
 };

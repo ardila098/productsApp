@@ -3,13 +3,8 @@ import React from "react";
 import ButtonEditProduct from "./buttonsProductsActions.js/ButtonEditProduct";
 import ButtonDeleteProduct from "./buttonsProductsActions.js/ButtonDeleteProduct";
 import { ContentActionsTableProducts } from "./buttonsProductsActions.js/styled";
-import { useContext } from "react";
-import { ProductsContext } from "../../context/ProductsContext";
 
-const ContentActions = ({ data }) => {
-  const { productsActions } = useContext(ProductsContext);
-  const { handleDelete, handleEdit } = productsActions;
-
+const ContentActions = ({ data, handleDelete, handleEdit }) => {
   return (
     <>
       <ContentActionsTableProducts>
@@ -24,4 +19,6 @@ export default ContentActions;
 
 ContentActions.propType = {
   data: PropType.object,
+  handleDelete: PropType.func,
+  handleEdit: PropType.func,
 };

@@ -72,79 +72,84 @@ export const Navbar = ({ styleNav }) => {
 
   return (
     <>
-    <div >
+      <div>
+        <StyledNav visibleNav={visibleNav}>
+          <ContentMobileNav>
+            <MobileNavButton icon={<MenuOutlined />} onClick={showDrawer} />
+          </ContentMobileNav>
+          <StyledLogo>
+            <Logo />
+          </StyledLogo>
+          <ContentMenu>
+            <MenuItems>
+              <Link className="link" to="/verona">
+                Home
+              </Link>
 
-      <StyledNav visibleNav={visibleNav}>
-        <ContentMobileNav>
-          <MobileNavButton icon={<MenuOutlined />} onClick={showDrawer} />
-        </ContentMobileNav>
-        <StyledLogo>
-          <Logo />
-        </StyledLogo>
-        <ContentMenu>
-          <MenuItems>
-            <Link className="link" to="/verona">
-              Home
-            </Link>
-
-            <NavLink className="link" to="/productsTable">
-              Store
-            </NavLink>
-            <NavLink className="link" to="/products">
-              Products
-            </NavLink>
-
-            <NavLink className="linkOff" to="/productsTable">
-              Off
-            </NavLink>
-          </MenuItems>
-        </ContentMenu>
-        <IconsContainer>
-          <Col xs={3} className="icons">
-            <Button onClick={onshowModalSeacrh}>
-              <SearchOutlined style={{ fontSize: "18px" }} />
-            </Button>
-          </Col>
-          <Col xs={3} className="icons">
-            <Button onClick={toggleDrawer}>
-              <ShoppingOutlined style={{ fontSize: "18px" }} />
-            </Button>
-          </Col>
-          <Col xs={3} className="icons">
-            <UserOutlined style={{ fontSize: "18px" }} />
-          </Col>
-          <Col xs={3} className="icons">
-            <HeartOutlined style={{ fontSize: "18px" }} />
-          </Col>
-        </IconsContainer>
-        <Drawer
-          title="Menú"
-          placement="left"
-          closable={false}
-          onClose={onClose}
-          visible={visible}
+              <NavLink className="link" to="/productsTable">
+                Store
+              </NavLink>
+              <NavLink className="link" to="/products">
+                Products
+              </NavLink>
+              <NavLink className="link" to="/slidersTable">
+                sliders
+              </NavLink>
+              <NavLink className="linkOff" to="/productsTable">
+                Off
+              </NavLink>
+            </MenuItems>
+          </ContentMenu>
+          <IconsContainer>
+            <Col xs={3} className="icons">
+              <Button onClick={onshowModalSeacrh}>
+                <SearchOutlined style={{ fontSize: "18px" }} />
+              </Button>
+            </Col>
+            <Col xs={3} className="icons">
+              <Button onClick={toggleDrawer}>
+                <ShoppingOutlined style={{ fontSize: "18px" }} />
+              </Button>
+            </Col>
+            <Col xs={3} className="icons">
+              <UserOutlined style={{ fontSize: "18px" }} />
+            </Col>
+            <Col xs={3} className="icons">
+              <HeartOutlined style={{ fontSize: "18px" }} />
+            </Col>
+          </IconsContainer>
+          <Drawer
+            title="Menú"
+            placement="left"
+            closable={false}
+            onClose={onClose}
+            visible={visible}
           >
-          <Menu mode="vertical" theme="light">
-            <StyledMenuItem key="inicio" className="link" to="/products">
-              Home
-            </StyledMenuItem>
-            <StyledMenuItem key="productos">
-              <Link className="link" to="/products">
-                Productos
-              </Link>
-            </StyledMenuItem>
-            <StyledMenuItem key="ofertas">
-              <Link className="link" to="/productsTable">
-                Crud
-              </Link>
-            </StyledMenuItem>
-            <StyledMenuItem key="contacto">Contacto</StyledMenuItem>
-          </Menu>
-        </Drawer>
-        <ModalSeacrh show={showModalSearch} onClose={onCloseModalSeacrh} />
-      </StyledNav>
-          </div>
-     
+            <Menu mode="vertical" theme="light">
+              <StyledMenuItem key="inicio" className="link" to="/products">
+                Home
+              </StyledMenuItem>
+              <StyledMenuItem key="productos">
+                <Link className="link" to="/products">
+                  Productos
+                </Link>
+              </StyledMenuItem>
+              <StyledMenuItem key="sliders">
+                <Link className="link" to="/sliders">
+                  sliders
+                </Link>
+              </StyledMenuItem>
+              <StyledMenuItem key="ofertas">
+                <Link className="link" to="/productsTable">
+                  Crud
+                </Link>
+              </StyledMenuItem>
+              <StyledMenuItem key="contacto">Contacto</StyledMenuItem>
+            </Menu>
+          </Drawer>
+          <ModalSeacrh show={showModalSearch} onClose={onCloseModalSeacrh} />
+        </StyledNav>
+      </div>
     </>
   );
 };

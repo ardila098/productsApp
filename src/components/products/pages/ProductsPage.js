@@ -2,6 +2,7 @@ import React from "react";
 import ProductsContainer from "../../containers/ProductsContainer";
 import Slider from "../../sliders/Slider";
 import { Navbar } from "../../../ui/components/Navbar";
+import CategorieSlider from "../components/categories/components/CategorieSlider";
 
 const ProductsPage = () => {
   return (
@@ -9,6 +10,7 @@ const ProductsPage = () => {
       <Navbar />
       {/* <WarningNav /> */}
       <Slider />
+      <CategorieSlider />
       <ProductsContainer />
     </>
   );

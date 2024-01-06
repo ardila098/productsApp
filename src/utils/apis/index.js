@@ -1,14 +1,13 @@
-
-
 const API = {
   users: {
-    root: "/users/"
+    root: "/users/",
   },
   products: {
-    root: /products/
+    root: /products/,
+  },
+  sliders: {
+    root: /sliders/,
   },
 };
-
-
 
 export default API;

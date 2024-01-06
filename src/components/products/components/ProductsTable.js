@@ -5,8 +5,9 @@ import { useContext } from "react";
 import { ProductsContext } from "../context/ProductsContext";
 
 const ProductsTable = () => {
-  const { productsCrud } = useContext(ProductsContext);
+  const { productsCrud, productsActions } = useContext(ProductsContext);
   const { products } = productsCrud;
+  const { handleDelete, handleEdit } = productsActions;
 
   const columns = [
     {
@@ -70,7 +71,11 @@ const ProductsTable = () => {
       key: "actions",
       render: (_text, record) => (
         <>
-          <ContentActions data={record} />
+          <ContentActions
+            data={record}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
         </>
       ),
     },
