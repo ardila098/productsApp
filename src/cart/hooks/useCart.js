@@ -4,7 +4,8 @@ const useCart = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const onAddToCart = useCallback((item) => {
-    setCartItems((currentCart) => [...currentCart, item]);
+    const newItem = { ...item, totalPriceItem: item.price };
+    setCartItems((currentCart) => [...currentCart, newItem]);
   }, []);
 
   console.log(cartItems);
@@ -12,6 +13,7 @@ const useCart = () => {
   return {
     onAddToCart,
     cartItems,
+    setCartItems,
   };
 };
 

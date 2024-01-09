@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ProductsContext } from "../../components/products/context/ProductsContext";
 import { ContentDescriptionCart, ContentShoppingCart } from "./style";
 import Counter from "../../components/products/components/productDetails/components/Counter";
@@ -7,21 +7,30 @@ import { Col, Row } from "antd";
 
 const ShoppingCart = () => {
   const { shoppingCart } = useContext(ProductsContext);
-  const [dataCount, setDataCount] = useState();
-  const { cartItems } = shoppingCart;
-  // console.log(cartItems);
+  const { cartItems, setCartItems } = shoppingCart;
+
   const total = cartItems.reduce(
-    (acc, product) => acc + product.price * dataCount,
+    (acc, product) => acc + product.priceTotalItem,
     0
   );
 
+  const updatePriceItem = (data) => {
+    console.log(data);
+    setCartItems(
+      cartItems.map((item) =>
+        item._id === data.idProduct
+          ? { ...item, priceTotalItem: data.price * data.counter }
+          : item
+      )
+    );
+  };
+
   console.log(cartItems);
-  console.log(dataCount);
 
   return (
     <>
       <ContentShoppingCart>
-        {cartItems.map((product) => (
+        {cartItems?.map((product) => (
           <>
             <div className="product" key={product._id}>
               <Col xs={12}>
@@ -38,7 +47,7 @@ const ShoppingCart = () => {
 
                   <Row>
                     <Col xs={24}>
-                      <span>${product.price} COP</span>
+                      <span>${product.priceTotalItem} COP</span>
                     </Col>
                   </Row>
                   <Row>
@@ -47,9 +56,8 @@ const ShoppingCart = () => {
                         <Counter
                           add={1}
                           remove={1}
-                          setDataCount={setDataCount}
-                          initialValue={product.quantity}
-                          price={product.price}
+                          updatePriceItems={updatePriceItem}
+                          data={product}
                         />
                       </ContainerCount>
                     </Col>

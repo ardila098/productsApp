@@ -4,7 +4,8 @@ import PropType from "prop-types";
 import useCounter from "./hooks/useCounter";
 
 const Counter = ({
-  setDataCount,
+  updatePriceItems,
+  data,
   initialValue = 1,
   addValue = 1,
   removeValue = 1,
@@ -18,8 +19,14 @@ const Counter = ({
   });
 
   useEffect(() => {
-    setDataCount(counter.count);
+    updatePriceItems({
+      counter: counter.count,
+      idProduct: data?._id,
+      price: data?.price,
+    });
   }, [counter]);
+
+  
 
   return (
     <>
@@ -38,7 +45,8 @@ Counter.propType = {
   initialValue: PropType.string,
   addValue: PropType.number,
   removeValue: PropType.number,
-  setDataCount: PropType.func,
   min: PropType.number,
   max: PropType.number,
+  data: PropType.object,
+  updatePriceItems: PropType.func,
 };

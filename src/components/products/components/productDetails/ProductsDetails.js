@@ -17,8 +17,9 @@ import {
 } from "./style";
 import ButtonCustomDetails from "./buttonsDetails/ButtonCustomDetails";
 import { Form, Radio, Row } from "antd";
-import Counter from "./components/Counter";
+// import Counter from "./components/Counter";
 import { ContainerCount } from "./components/style";
+import Counter from "./components/Counter";
 
 const arraySize = {
   bra: [
@@ -41,7 +42,6 @@ const ProductsDetails = () => {
   const { productsCrud, shoppingCart } = useContext(ProductsContext);
   const { getProductById } = productsCrud;
   const { onAddToCart } = shoppingCart;
-  const [dataCount, setDataCount] = useState();
   const [product, setproduct] = useState();
   const [selectSizes, setSelectSizes] = useState({
     bra: "",
@@ -50,8 +50,6 @@ const ProductsDetails = () => {
   const [imgInitial, setImgInitial] = useState();
 
   console.log(selectSizes);
-
-  console.log(dataCount);
 
   const getProduct = async () => {
     const dataProduct = await getProductById(id);
@@ -68,7 +66,6 @@ const ProductsDetails = () => {
       ...product,
       bra: data.bra,
       pantie: data.pantie,
-      quantity: dataCount,
     };
     onAddToCart(dataForm);
     console.log(dataForm);
@@ -170,7 +167,7 @@ const ProductsDetails = () => {
                 </ContentSizes>
 
                 <ContainerCount>
-                  <Counter add={1} remove={1} setDataCount={setDataCount} />
+                  <Counter />
                 </ContainerCount>
 
                 <Row>
