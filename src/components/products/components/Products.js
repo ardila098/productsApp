@@ -42,11 +42,9 @@ const Products = () => {
     <ContenCustom>
       <TitleCustom title={"Nuestros Productos"} />
 
-
-      
       <ContentProducts>
-
         {products.map((product) => {
+          console.log(product);
           return (
             <CardProduct className="producto" key={product._id}>
               {/* {product.imgs.map((image) => (

@@ -20,7 +20,6 @@ const ProductsCustom = () => {
               display: "flex",
               justifyContent: "center",
               minWidth: "700px",
-              marginTop: "150px",
             }}
           >
             <SearchCustom modePage />

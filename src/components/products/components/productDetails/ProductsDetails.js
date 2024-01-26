@@ -83,6 +83,10 @@ const ProductsDetails = () => {
     });
   };
 
+  const updatePriceItems = (data) => {
+    console.log(data);
+  };
+
   useEffect(() => {
     getProduct();
   }, [id]);
@@ -167,7 +171,7 @@ const ProductsDetails = () => {
                 </ContentSizes>
 
                 <ContainerCount>
-                  <Counter />
+                  <Counter updatePriceItems={updatePriceItems} data={product} />
                 </ContainerCount>
 
                 <Row>

@@ -39,7 +39,7 @@ const ContentShoppingCart = styled.div`
     justify-content: space-between;
     font-size: 1.2rem;
     font-weight: bold;
-    
+  
   }
 
 `;

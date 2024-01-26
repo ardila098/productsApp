@@ -15,17 +15,36 @@ const ContentSelect = styled.div`
 `;
 
 const ContainerCount = styled(Row)`
+  width: 100%;
   display: flex;
   border-radius: 5px;
   border: 1px solid;
-  width: 40%;
-  gap: 10px;
+  width: 35%;
   justify-content: center;
   align-items: center;
   height: 40px;
   margin-bottom: 10px;
   border: ${(props) => (props.counterCart ? "none" : "1px solid")};
+  span {
+  }
 
+  div {
+    display: ${(props) => (props.counterCart ? "flex" : "")};
+    gap: ${(props) => (props.counterCart ? "10px" : "2px")};
+    align-items: center;
+  }
 `;
 
-export { StyleSelectSize, ContentSelect, ContainerCount };
+const TextParcial = styled.span`
+  color: #919191;
+`;
+
+const PriceItemTotal = styled.span``;
+
+export {
+  StyleSelectSize,
+  ContentSelect,
+  ContainerCount,
+  PriceItemTotal,
+  TextParcial,
+};

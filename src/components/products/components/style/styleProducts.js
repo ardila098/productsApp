@@ -12,6 +12,7 @@ const ContentProducts = styled.div`
   font-family: "Montserrat", sans-serif;
   margin-top: 70px;
   min-width: 656px;
+      padding: 20px;
   .image-container {
     position: relative;
     overflow: hidden;
@@ -52,6 +53,8 @@ const ContentImgProduct = styled.div`
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     border: 5px;
     border-radius: 7px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
     width: 280px;
     height: 400px;
     transition: transform 0.3s ease;

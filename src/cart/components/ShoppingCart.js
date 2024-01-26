@@ -1,18 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../components/products/context/ProductsContext";
 import { ContentDescriptionCart, ContentShoppingCart } from "./style";
 import Counter from "../../components/products/components/productDetails/components/Counter";
-import { ContainerCount } from "../../components/products/components/productDetails/components/style";
+import {
+  ContainerCount,
+  PriceItemTotal,
+  TextParcial,
+} from "../../components/products/components/productDetails/components/style";
 import { Col, Row } from "antd";
 
 const ShoppingCart = () => {
   const { shoppingCart } = useContext(ProductsContext);
   const { cartItems, setCartItems } = shoppingCart;
-
-  const total = cartItems.reduce(
-    (acc, product) => acc + product.priceTotalItem,
-    0
-  );
+  const [sumTotal, setSumTotal] = useState({
+    total: 0,
+  });
 
   const updatePriceItem = (data) => {
     console.log(data);
@@ -26,6 +28,11 @@ const ShoppingCart = () => {
   };
 
   console.log(cartItems);
+
+  useEffect(() => {
+    const total = cartItems.reduce((acc, item) => acc + item.priceTotalItem, 0);
+    setSumTotal((currentTotal) => ({ ...currentTotal, total: total }));
+  }, [cartItems]);
 
   return (
     <>
@@ -47,19 +54,31 @@ const ShoppingCart = () => {
 
                   <Row>
                     <Col xs={24}>
-                      <span>${product.priceTotalItem} COP</span>
+                      <PriceItemTotal>
+                        $
+                        {product.priceTotalItem
+                          ? product.priceTotalItem
+                          : product.price}
+                        COP
+                      </PriceItemTotal>
                     </Col>
                   </Row>
                   <Row>
                     <Col xs={24}>
                       <ContainerCount counterCart={true}>
-                        <Counter
-                          add={1}
-                          remove={1}
-                          updatePriceItems={updatePriceItem}
-                          data={product}
-                        />
+                        <Col xs={24}>
+                          <Counter
+                            add={1}
+                            remove={1}
+                            updatePriceItems={updatePriceItem}
+                            data={product}
+                          />
+                        </Col>
                       </ContainerCount>
+                      <Col xs={24}>
+                        <TextParcial>Valor Unidad </TextParcial>
+                        <TextParcial>${product.price.toFixed(1)}</TextParcial>
+                      </Col>
                     </Col>
                   </Row>
                 </ContentDescriptionCart>
@@ -70,7 +89,7 @@ const ShoppingCart = () => {
         <>
           <div className="total">
             <span>Total:</span>
-            <span>{total}</span>
+            <span>{sumTotal.total}</span>
           </div>
         </>
       </ContentShoppingCart>

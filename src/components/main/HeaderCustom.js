@@ -1,7 +1,7 @@
 import React from "react";
 
 const HeaderCustom = () => {
-  return <div></div>;
+  return <div style={{ minHeight: "120px" }}></div>;
 };
 
 export default HeaderCustom;

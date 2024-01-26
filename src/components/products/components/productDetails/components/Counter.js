@@ -26,15 +26,15 @@ const Counter = ({
     });
   }, [counter]);
 
-  
-
   return (
     <>
-      <BtnCount onClick={() => removeCount(removeValue)}>-</BtnCount>
+      <div>
+        <BtnCount onClick={() => removeCount(removeValue)}>-</BtnCount>
 
-      <span>{counter.count}</span>
+        <span>{counter.count}</span>
 
-      <BtnCount onClick={() => addCount(addValue)}>+</BtnCount>
+        <BtnCount onClick={() => addCount(addValue)}>+</BtnCount>
+      </div>
     </>
   );
 };

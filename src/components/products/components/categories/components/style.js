@@ -31,4 +31,10 @@ const ContentImgItem = styled.div`
   }
 `;
 
-export { ContentItemsSlider, ContentItem, ContentImgItem };
+const ContentSliderCustom= styled.div`
+display: flex;
+background: rgba(227, 225, 217, 0.2);
+
+`
+
+export { ContentItemsSlider, ContentItem, ContentImgItem, ContentSliderCustom };
