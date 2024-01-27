@@ -1,16 +1,13 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
 const useCart = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const onAddToCart = useCallback((item) => {
-    const newItem = { ...item, totalPriceItem: item.price };
-    setCartItems((currentCart) => [...currentCart, newItem]);
+    setCartItems((currentCart) => [...currentCart, item]);
   }, []);
 
 
-
-  console.log(cartItems);
 
   return {
     onAddToCart,

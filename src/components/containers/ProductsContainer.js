@@ -8,7 +8,6 @@ import Products from "../products/components/Products";
 const ProductsContainer = () => {
   const { productsCrud } = useContext(ProductsContext);
   const { products } = productsCrud;
-  console.log(products);
 
   return (
     <>

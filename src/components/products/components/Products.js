@@ -26,7 +26,6 @@ const Products = () => {
   const [isHoverId, setIsHoverId] = useState();
 
   const handleMouseEnter = (productId) => {
-    console.log(productId);
     setIsHoverId(productId);
   };
 
@@ -44,7 +43,6 @@ const Products = () => {
 
       <ContentProducts>
         {products.map((product) => {
-          console.log(product);
           return (
             <CardProduct className="producto" key={product._id}>
               {/* {product.imgs.map((image) => (

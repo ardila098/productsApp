@@ -12,12 +12,9 @@ import { Col, Row } from "antd";
 const ShoppingCart = () => {
   const { shoppingCart } = useContext(ProductsContext);
   const { cartItems, setCartItems } = shoppingCart;
-  const [sumTotal, setSumTotal] = useState({
-    total: 0,
-  });
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const updatePriceItem = (data) => {
-    console.log(data);
     setCartItems(
       cartItems.map((item) =>
         item._id === data.idProduct
@@ -27,11 +24,11 @@ const ShoppingCart = () => {
     );
   };
 
-  console.log(cartItems);
-
   useEffect(() => {
-    const total = cartItems.reduce((acc, item) => acc + item.priceTotalItem, 0);
-    setSumTotal((currentTotal) => ({ ...currentTotal, total: total }));
+    const sum = cartItems.reduce((accumulator, item) => {
+      return accumulator + (item.priceTotalItem || item.price);
+    }, 0);
+    setTotalPrice(sum);
   }, [cartItems]);
 
   return (
@@ -89,7 +86,7 @@ const ShoppingCart = () => {
         <>
           <div className="total">
             <span>Total:</span>
-            <span>{sumTotal.total}</span>
+            <span>{totalPrice}</span>
           </div>
         </>
       </ContentShoppingCart>
