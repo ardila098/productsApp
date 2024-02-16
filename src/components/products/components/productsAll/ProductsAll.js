@@ -59,22 +59,17 @@ const ProductsAll = () => {
         {updateSearch.map((product) => {
           return (
             <CardProduct className="producto" key={product._id}>
-              {/* {product.imgs.map((image) => (
-                  <div className="image-container" key={image._id}>
-                    <img src={image.url} alt={product.description} />
-                  </div>
-                ))} */}
               <ContentImgProduct
                 onMouseEnter={() => handleMouseEnter(product._id)}
                 onMouseLeave={handleMouseLeave}
-                key={product.imgs[0]._id}
+                key={product._id}
                 className="image-container"
               >
                 <img
                   src={
-                    isHoverId === product._id && product.imgs[1]
+                    isHoverId === product._id && product.imgs && product.imgs[1]
                       ? product.imgs[1].url
-                      : product.imgs[0].url
+                      : product.imgs && product.imgs[0] && product.imgs[0].url
                   }
                   alt={product.description}
                   onClick={() => redirectToProductDetails(product._id)}
@@ -84,8 +79,8 @@ const ProductsAll = () => {
                     <HeartOutlined style={{ fontSize: "18px" }} />
                   </Button>
                   {/* <Button>
-                    <EyeOutlined style={{ fontSize: "18px" }} />
-                  </Button> */}
+            <EyeOutlined style={{ fontSize: "18px" }} />
+          </Button> */}
                 </ButtonsContainer>
 
                 <ItemName>{product.name}</ItemName>

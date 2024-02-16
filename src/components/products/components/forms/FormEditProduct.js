@@ -2,32 +2,63 @@ import React, { useContext, useEffect, useState } from "react";
 import { Input, InputNumber, Form, Col, Row, Button, Upload } from "antd/es";
 import { ProductsContext } from "../../context/ProductsContext";
 
-const FormEditProduct = (id) => {
+const FormEditProduct = (id = '') => {
   const [form] = Form.useForm();
   const { productsCrud } = useContext(ProductsContext);
-  const { addProduct, getProductById } = productsCrud;
+  const { addProduct, getProductById, updateProduct } = productsCrud;
   const [images, setImages] = useState([]);
+  const [idProduct, setIdProduct] = useState();
+  const [initialFileList, setInitialFileList] = useState([]);
 
   const handleSubmit = (values) => {
+    console.log(values);
     const product = {
       ...values,
       imgs: images,
     };
     console.log(product);
-    addProduct(product);
+    if (id) {
+      setImages(values.imgs);
+      const newDataProduct = {
+        ...values,
+        imgs: initialFileList,
+      };
+      updateProduct(idProduct, newDataProduct);
+    } else {
+      addProduct(product);
+    }
   };
 
   const onUpload = (info) => {
     console.log(info.fileList);
-    setImages(info.fileList.map((file) => file.originFileObj));
-  };
 
+    const updatedImages = info.fileList.filter(
+      (file) => file.status !== "removed"
+    );
+
+    setInitialFileList(info.fileList);
+
+    setImages(updatedImages.map((file) => file.originFileObj));
+  };
   useEffect(() => {
     if (!id) {
       form.resetFields();
+      setInitialFileList([]);
     } else {
       getProductById(id).then((data) => {
+        console.log(data);
         form.setFieldsValue(data);
+        setIdProduct(data._id);
+
+        setInitialFileList(
+          data.imgs.map((img) => ({
+            uid: img._id,
+            name: img.url,
+            status: "done",
+            url: img.url,
+            originFileObj: img,
+          }))
+        );
       });
     }
   }, [id]);
@@ -64,13 +95,13 @@ const FormEditProduct = (id) => {
         <Form.Item name="description" label="Description">
           <Input.TextArea />
         </Form.Item>
-
         <Form.Item name="imgs" label="Images">
           <Upload
             listType="picture-card"
             name="images"
             action="/api/upload"
             onChange={onUpload}
+            fileList={initialFileList}
             multiple
           >
             <Button>Upload</Button>

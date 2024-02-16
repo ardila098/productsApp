@@ -38,24 +38,24 @@ const ProductsService = () => {
   };
 
   const editProduct = async (id, product) => {
+    console.log(id);
+    console.log(product);
     const formData = new FormData();
-
+    formData.append("_id", id);
     formData.append("name", product.name);
     formData.append("category", product.category);
     formData.append("description", product.description);
     formData.append("price", product.price);
     formData.append("stock", product.stock);
-
-    if (product.newImgs) {
-      product.newImgs.forEach((img) => {
-        formData.append("imgs", img);
-      });
-    }
+    product.imgs.forEach((img) => {
+      formData.append("imgs", img);
+    });
 
     const { data } = await axios.put(
       `${baseUrl}${API.products.root}${id}`,
       formData
     );
+    console.log(data);
 
     return { data };
   };
