@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Input, InputNumber, Form, Col, Row, Button, Upload } from "antd/es";
 import { ProductsContext } from "../../context/ProductsContext";
 
-const FormEditProduct = (id = '') => {
+const FormEditProduct = (id = "") => {
   const [form] = Form.useForm();
   const { productsCrud } = useContext(ProductsContext);
   const { addProduct, getProductById, updateProduct } = productsCrud;
@@ -18,10 +18,10 @@ const FormEditProduct = (id = '') => {
     };
     console.log(product);
     if (id) {
-      setImages(values.imgs);
+    
       const newDataProduct = {
         ...values,
-        imgs: initialFileList,
+        imgs: images,
       };
       updateProduct(idProduct, newDataProduct);
     } else {
