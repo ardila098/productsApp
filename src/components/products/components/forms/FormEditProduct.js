@@ -10,6 +10,7 @@ const FormEditProduct = (id = "") => {
   const [idProduct, setIdProduct] = useState();
   const [initialFileList, setInitialFileList] = useState([]);
 
+  console.log(images);
   const handleSubmit = (values) => {
     console.log(values);
     const product = {
@@ -18,7 +19,6 @@ const FormEditProduct = (id = "") => {
     };
     console.log(product);
     if (id) {
-    
       const newDataProduct = {
         ...values,
         imgs: images,
@@ -36,9 +36,15 @@ const FormEditProduct = (id = "") => {
       (file) => file.status !== "removed"
     );
 
+    console.log(updatedImages);
+
+    const newImages = updatedImages.map((file) => file.originFileObj);
+
+    console.log(newImages);
+
     setInitialFileList(info.fileList);
 
-    setImages(updatedImages.map((file) => file.originFileObj));
+    setImages(newImages);
   };
   useEffect(() => {
     if (!id) {
@@ -50,15 +56,15 @@ const FormEditProduct = (id = "") => {
         form.setFieldsValue(data);
         setIdProduct(data._id);
 
-        setInitialFileList(
-          data.imgs.map((img) => ({
-            uid: img._id,
-            name: img.url,
-            status: "done",
-            url: img.url,
-            originFileObj: img,
-          }))
-        );
+        const dataImages = data.imgs.map((img) => ({
+          uid: img._id,
+          name: img.url,
+          status: "done",
+          url: img.url,
+          originFileObj: img,
+        }));
+        setImages(dataImages);
+        setInitialFileList(dataImages);
       });
     }
   }, [id]);

@@ -38,8 +38,6 @@ const ProductsService = () => {
   };
 
   const editProduct = async (id, product) => {
-    console.log(id);
-    console.log(product);
     const formData = new FormData();
     formData.append("_id", id);
     formData.append("name", product.name);
@@ -47,15 +45,24 @@ const ProductsService = () => {
     formData.append("description", product.description);
     formData.append("price", product.price);
     formData.append("stock", product.stock);
+
+    // Procesar imágenes nuevas
     product.imgs.forEach((img) => {
-      formData.append("imgs", img);
+      if (img instanceof File) {
+        formData.append("imgs", img);
+      }
+    });
+
+    product.imgs.forEach((img) => {
+      if (typeof img._id === "string") {
+        formData.append("existingImgs", img._id);
+      }
     });
 
     const { data } = await axios.put(
       `${baseUrl}${API.products.root}${id}`,
       formData
     );
-    console.log(data);
 
     return { data };
   };
