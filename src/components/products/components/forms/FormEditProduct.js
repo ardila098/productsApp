@@ -1,16 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropType from "prop-types";
 import { Input, InputNumber, Form, Col, Row, Button, Upload } from "antd/es";
 import { ProductsContext } from "../../context/ProductsContext";
 
-const FormEditProduct = (id = "") => {
+const FormEditProduct = ({id}) => {
   const [form] = Form.useForm();
   const { productsCrud } = useContext(ProductsContext);
   const { addProduct, getProductById, updateProduct } = productsCrud;
   const [images, setImages] = useState([]);
-  const [idProduct, setIdProduct] = useState();
+  
   const [initialFileList, setInitialFileList] = useState([]);
 
-  console.log(images);
+  console.log(id);
   const handleSubmit = (values) => {
     console.log(values);
     const product = {
@@ -23,7 +24,7 @@ const FormEditProduct = (id = "") => {
         ...values,
         imgs: images,
       };
-      updateProduct(idProduct, newDataProduct);
+      updateProduct(id, newDataProduct);
     } else {
       addProduct(product);
     }
@@ -54,7 +55,7 @@ const FormEditProduct = (id = "") => {
       getProductById(id).then((data) => {
         console.log(data);
         form.setFieldsValue(data);
-        setIdProduct(data._id);
+       
 
         const dataImages = data.imgs.map((img) => ({
           uid: img._id,
@@ -125,3 +126,7 @@ const FormEditProduct = (id = "") => {
 };
 
 export default FormEditProduct;
+
+FormEditProduct.propType = {
+  id: PropType.string,
+};
