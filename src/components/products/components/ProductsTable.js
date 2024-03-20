@@ -19,6 +19,9 @@ const ProductsTable = () => {
       title: "Category",
       dataIndex: "category",
       key: "category",
+      render: (categories) =>
+        categories?.map((category) => category.name).join(", ") ||
+        "No category",
     },
     {
       title: "Price",

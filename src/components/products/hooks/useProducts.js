@@ -38,8 +38,6 @@ const useProducts = () => {
   };
 
   const updateProduct = async (idProduct, formData) => {
-
-    
     try {
       console.log(formData);
       const data = await editProduct(idProduct, formData);

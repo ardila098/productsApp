@@ -8,6 +8,9 @@ const API = {
   sliders: {
     root: /sliders/,
   },
+  categorys: {
+    root: /categorys/,
+  },
 };
 
 export default API;

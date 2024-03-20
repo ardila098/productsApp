@@ -27,7 +27,7 @@ const ProductsService = () => {
     await axios.post(`${baseUrl}${API.products.root}`, formData);
   };
 
-  const getProduct = async ({ id }) => {
+  const getProduct = async (id) => {
     console.log(id);
     const getProduct = await axios.get(
       "http://localhost:3000/api/products/" + id

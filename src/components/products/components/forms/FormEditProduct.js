@@ -2,13 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import PropType from "prop-types";
 import { Input, InputNumber, Form, Col, Row, Button, Upload } from "antd/es";
 import { ProductsContext } from "../../context/ProductsContext";
+import SelectCategory from "../selects/SelectCategory";
 
-const FormEditProduct = ({id}) => {
+const FormEditProduct = ({ id }) => {
   const [form] = Form.useForm();
   const { productsCrud } = useContext(ProductsContext);
   const { addProduct, getProductById, updateProduct } = productsCrud;
+
   const [images, setImages] = useState([]);
-  
+
   const [initialFileList, setInitialFileList] = useState([]);
 
   console.log(id);
@@ -55,7 +57,6 @@ const FormEditProduct = ({id}) => {
       getProductById(id).then((data) => {
         console.log(data);
         form.setFieldsValue(data);
-       
 
         const dataImages = data.imgs.map((img) => ({
           uid: img._id,
@@ -80,12 +81,9 @@ const FormEditProduct = ({id}) => {
             </Form.Item>
           </Col>
           <Col xs={24}>
-            <Form.Item name="category" label="Category">
-              <Input />
-            </Form.Item>
+            <SelectCategory />
           </Col>
         </Row>
-
         <Row gutter={20}>
           <Col xs={12}>
             <Form.Item name="price" label="Price">

@@ -5,6 +5,7 @@ import useProductsActions from "../components/productsActions/hook/useProductsAc
 import useCart from "../../../cart/hooks/useCart";
 import useDrawerCart from "../../drawer/hooks/useDrawerCart";
 import useSearchCustom from "../../searchCustom/hooks/useSearchCustom";
+import useCategorys from "../components/categories/hooks/useCategorys";
 
 export const ProductsContext = createContext();
 
@@ -12,7 +13,8 @@ const useContextValue = () => {
   const productsCrud = useProducts();
   const drawerShoppingCart = useDrawerCart();
   const shoppingCart = useCart();
-  const searchCustom = useSearchCustom({productsCrud});
+  const searchCustom = useSearchCustom({ productsCrud });
+  const categorysCrud = useCategorys();
   const productsActions = useProductsActions({
     removeProduct: productsCrud.removeProduct,
   });
@@ -24,6 +26,7 @@ const useContextValue = () => {
       searchCustom,
       drawerShoppingCart,
       shoppingCart,
+      categorysCrud,
     };
   }, [
     productsCrud,
@@ -31,6 +34,7 @@ const useContextValue = () => {
     drawerShoppingCart,
     shoppingCart,
     searchCustom,
+    categorysCrud,
   ]);
 
   return contextValue;
