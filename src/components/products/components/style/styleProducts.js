@@ -12,7 +12,7 @@ const ContentProducts = styled.div`
   font-family: "Montserrat", sans-serif;
   margin-top: 70px;
   min-width: 656px;
-      padding: 20px;
+  padding: 20px;
   .image-container {
     position: relative;
     overflow: hidden;
@@ -36,21 +36,16 @@ const ContentImgProduct = styled.div`
   border-radius: 7px;
   border-color: transparent;
   border: 5px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 30px -12px inset,
-    rgba(0, 0, 0, 0.1) 0px 12px 25px -18px inset;
   background-color: transparent;
   cursor: pointer;
   :hover {
-    box-shadow: rgb(255, 255, 255, 0.2) 3px 3px 6px 0px inset,
+    /* box-shadow: rgb(255, 255, 255, 0.2) 3px 3px 6px 0px inset,
       rgba(255, 255, 255, 0.2) -3px -3px 6px 1px inset;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.1) 0px 30px 60px -30px,
-      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
   }
   img {
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     border: 5px;
     border-radius: 7px;
     border-bottom-right-radius: 0px;
@@ -69,23 +64,24 @@ const CardProduct = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
- 
+
   span {
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+
+    font-family: "Baloo Tamma 2", system-ui;
+    font-weight: 550;
+    font-size: 1.1rem;
   }
 `;
 
 const ItemName = styled.span`
-  font-size: 15px;
-
+  font-size: 1.1rem;
   margin-top: 10px;
 `;
 
 const ItemPrice = styled.span`
-  font-size: 13px;
   color: black;
-
+  font-size: 1.1rem;
   margin-top: 10px;
 `;
 
@@ -99,7 +95,6 @@ const ContenCustom = styled.div`
   min-height: 768px;
   /* background: #E3E1D9; */
   background: rgba(227, 225, 217, 0.2);
-  
 
   .title {
     background-color: aliceblue;

@@ -11,6 +11,9 @@ const API = {
   categorys: {
     root: /categorys/,
   },
+  garmentType: {
+    root: /garmentType/,
+  },
 };
 
 export default API;

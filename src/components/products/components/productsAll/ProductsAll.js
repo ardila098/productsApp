@@ -53,7 +53,8 @@ const ProductsAll = () => {
   }, [searchTerm]);
 
   return (
-    <ContenCustom>
+    <ContenCustom
+    stom>
       <TitleCustom title={"Nuestros Productos"} />
       <ContentProducts>
         {updateSearch.map((product) => {

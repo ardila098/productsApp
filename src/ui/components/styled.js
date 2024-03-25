@@ -96,14 +96,25 @@ const MenuItems = styled(Row)`
     text-decoration: none;
     cursor: pointer;
 
-    font-size: 18px;
+    font-size: 20px;
     color: ${(props) => (props.styleNav ? "white" : "black")};
     /* font-family: "Montserrat", sans-serif; */
+
+    font-family: "Baloo Tamma 2", system-ui;
+    font-weight: 500;
+    .baloo-tamma{
+  font-optical-sizing: auto;
+  font-style: normal;
+}
   }
   .linkOff {
     text-decoration: none;
+    /* font-family: "Alata", sans-serif; */
+    font-family: "Baloo Tamma 2", system-ui;
+    font-weight: 500;
     cursor: pointer;
     color: red;
+  font-size: 1rem;
   }
 `;
 

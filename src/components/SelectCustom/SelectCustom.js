@@ -6,11 +6,16 @@ const SelectCustom = ({
   label,
   name,
   valuePropName,
+  onChange,
   multiple = false,
 }) => {
   return (
     <Form.Item name={name} label={label} valuePropName={valuePropName}>
-      <Select options={data} mode={multiple ? "multiple" : ""} />
+      <Select
+        options={data}
+        mode={multiple ? "multiple" : ""}
+        onChange={onChange}
+      />
     </Form.Item>
   );
 };
@@ -21,6 +26,7 @@ SelectCustom.propTypes = {
   name: PropType.string,
   multiple: PropType.bool,
   valuePropName: PropType.string,
+  onChange: PropType.func,
 };
 
 export default SelectCustom;

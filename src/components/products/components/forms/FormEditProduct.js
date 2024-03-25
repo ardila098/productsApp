@@ -3,11 +3,13 @@ import PropType from "prop-types";
 import { Input, InputNumber, Form, Col, Row, Button, Upload } from "antd/es";
 import { ProductsContext } from "../../context/ProductsContext";
 import SelectCategory from "../selects/SelectCategory";
+import SelectGarmentType from "../selects/selectGarmentType/SelectGarmentType";
 
 const FormEditProduct = ({ id }) => {
   const [form] = Form.useForm();
   const { productsCrud } = useContext(ProductsContext);
   const { addProduct, getProductById, updateProduct } = productsCrud;
+  const [sizeInventories, setSizeInventories] = useState({});
 
   const [images, setImages] = useState([]);
 
@@ -16,6 +18,7 @@ const FormEditProduct = ({ id }) => {
   console.log(id);
   const handleSubmit = (values) => {
     console.log(values);
+    console.log(sizeInventories);
     const product = {
       ...values,
       imgs: images,
@@ -100,6 +103,11 @@ const FormEditProduct = ({ id }) => {
         <Form.Item name="description" label="Description">
           <Input.TextArea />
         </Form.Item>
+
+        <Row>
+          <SelectGarmentType setSizeInventories={setSizeInventories} />
+        </Row>
+
         <Form.Item name="imgs" label="Images">
           <Upload
             listType="picture-card"

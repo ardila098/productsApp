@@ -22,7 +22,9 @@ const ContentTitleCustom = styled.div`
 `;
 
 const TextTitle = styled.h3`
-  font-family: "Montserrat", sans-serif;
+  font-family: "Baloo Tamma 2", system-ui;
+    font-weight: 750;
+    font-size: 1.6rem;
 `;
 
 export { ContentLogo, ContentTitleCustom, TextTitle };

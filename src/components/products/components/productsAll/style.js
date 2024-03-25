@@ -9,9 +9,12 @@ const ContentProducts = styled.div`
   justify-content: center;
   gap: 40px;
   margin-bottom: 30px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Baloo Tamma 2", system-ui;
+  font-weight: 550;
+  font-size: 1.1rem;
   margin-top: 70px;
   min-width: 656px;
+
   .image-container {
     position: relative;
     overflow: hidden;
@@ -35,26 +38,24 @@ const ContentImgProduct = styled.div`
   border-radius: 7px;
   border-color: transparent;
   border: 5px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 30px -12px inset,
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 30px -12px inset,
     rgba(0, 0, 0, 0.1) 0px 12px 25px -18px inset;
-  background-color: transparent;
+  background-color: transparent; */
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
   cursor: pointer;
-  :hover {
+  /* :hover {
     box-shadow: rgb(255, 255, 255, 0.2) 3px 3px 6px 0px inset,
       rgba(255, 255, 255, 0.2) -3px -3px 6px 1px inset;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
       rgba(0, 0, 0, 0.1) 0px 30px 60px -30px,
       rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  }
+  } */
   img {
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     border: 5px;
     border-radius: 7px;
     width: 280px;
     height: 400px;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
   }
 
   /* :hover img {
@@ -69,18 +70,18 @@ const CardProduct = styled.div`
 
   span {
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Baloo Tamma 2", system-ui;
+    font-weight: 550;
   }
 `;
 
 const ItemName = styled.span`
-  font-size: 15px;
-
+   font-size: 1.1rem;
   margin-top: 10px;
 `;
 
 const ItemPrice = styled.span`
-  font-size: 13px;
+    font-size: 1.1rem;
   color: black;
 
   margin-top: 10px;
@@ -88,7 +89,7 @@ const ItemPrice = styled.span`
 
 const TitleContentProduct = styled.span`
   font-family: "Montserrat", sans-serif;
-  font-size: 20px;
+  font-size: 1.1rem;
   text-align: center;
 `;
 
